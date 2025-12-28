@@ -1,75 +1,156 @@
-# Nuxt Minimal Starter
+# 👁️ TV Visual Check
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+> Aplicativo de triagem básica e treino de acuidade visual para Smart TVs, desktops e dispositivos touch.
 
-## Setup
+⚠️ **ATENÇÃO:** Este app é APENAS para triagem básica/treino. **NÃO substitui exame oftalmológico.** Não use para decisões críticas (ex.: dirigir).
 
-Make sure to install dependencies:
+---
+
+## ✨ Funcionalidades
+
+### Testes de Acuidade Visual
+- **Snellen** — Letras clássicas (C, D, E, F, L, O, P, T, Z)
+- **Pediátrico** — Formas geométricas para crianças (●, ■, ▲, ♥, ★)
+- **Direcional (Tumbling E)** — Letra E em diferentes orientações
+
+### Modos de Teste
+| Modo | Descrição |
+|------|-----------|
+| **Assistido** | Guiado pelo app com botões de resposta |
+| **Pro** | Manual com D-pad, múltiplos caracteres por linha |
+
+### Escala de Acuidade
+12 linhas de 20/400 a 20/10 (logMAR 1.3 a -0.3)
+
+### Multi-Input
+- 📺 Controle remoto de TV (D-pad)
+- ⌨️ Teclado
+- 👆 Touch/Mouse
+
+---
+
+## 🚀 Quick Start
 
 ```bash
-# npm
+# Instalar dependências
 npm install
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+# Iniciar servidor de desenvolvimento
 npm run dev
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
+# Abrir no navegador
+open http://localhost:3000
 ```
 
-## Production
+---
 
-Build the application for production:
+## 📐 Calibração
+
+O app requer calibração antes dos testes:
+
+1. **Presets de TV** — Selecione o tamanho da sua tela (32" a 75")
+2. **Distância** — Configure a distância do paciente (2-10m)
+3. **Fator de Correção** — Ajuste fino (0.9x a 1.1x)
+
+### Presets Disponíveis
+| Tela | Resolução | px/mm |
+|------|-----------|-------|
+| 32" | 1080p | 2.9 |
+| 40" | 1080p | 2.3 |
+| 43" | 4K | 4.2 |
+| 50" | 4K | 3.6 |
+| 55" | 4K | 3.1 |
+| 65" | 4K | 2.7 |
+| 75" | 4K | 2.3 |
+| 27" Monitor | 4K | 5.8 |
+
+---
+
+## 🎮 Controles
+
+### Modo Assistido
+| Ação | Controle TV | Teclado | Touch |
+|------|-------------|---------|-------|
+| Navegar | D-pad | Setas | — |
+| Selecionar | OK | Enter/Espaço | Tap |
+| Voltar | Back | Escape | Botão |
+
+### Modo Pro
+| Ação | Controle TV | Teclado |
+|------|-------------|---------|
+| Letra menor | ↓ | Seta baixo |
+| Letra maior | ↑ | Seta cima |
+| Novas letras | → | Seta direita |
+| Sair | ← | Seta esquerda / Escape |
+
+---
+
+## 🛠️ Tech Stack
+
+- **Nuxt 4** — Framework Vue.js
+- **Vuetify 3** — UI Components
+- **Pinia** — State Management
+- **TypeScript** — Type Safety
+- **Vitest** — Unit Tests (78 testes)
+- **Playwright** — E2E Tests (7 cenários)
+
+---
+
+## 📁 Estrutura do Projeto
+
+```
+app/
+├── components/          # Componentes Vue
+├── composables/         # Lógica reutilizável
+├── layouts/             # Layout padrão
+├── pages/               # Rotas
+│   ├── test/            # Páginas de teste
+│   └── ...
+├── stores/              # Pinia stores
+└── utils/               # Utilitários
+```
+
+---
+
+## 🧪 Testes
 
 ```bash
-# npm
+# Testes unitários
+npm run test:run
+
+# Testes E2E
+npm run test:e2e
+
+# Cobertura
+npm run test:coverage
+```
+
+---
+
+## 📦 Build
+
+```bash
+# Build para produção
 npm run build
 
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
+# Preview do build
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+---
+
+## 📄 Licença
+
+MIT
+
+---
+
+## ⚠️ Disclaimer
+
+Este aplicativo é fornecido "como está", sem garantias de qualquer tipo. Os resultados podem variar por:
+- Iluminação ambiente
+- Distância do observador
+- Zoom do navegador
+- Configuração da tela
+
+**Sempre consulte um oftalmologista para diagnóstico profissional.**
