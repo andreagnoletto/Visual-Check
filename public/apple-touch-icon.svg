@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 180">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1976D2"/>
+      <stop offset="100%" style="stop-color:#1565C0"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="180" height="180" rx="22" fill="url(#bg)"/>
+  <!-- Eye outer -->
+  <ellipse cx="90" cy="90" rx="56" ry="35" fill="none" stroke="#fff" stroke-width="8"/>
+  <!-- Iris -->
+  <circle cx="90" cy="90" r="24" fill="#fff"/>
+  <!-- Pupil -->
+  <circle cx="90" cy="90" r="12" fill="#1976D2"/>
+  <!-- Highlight -->
+  <circle cx="97" cy="84" r="4" fill="#fff" opacity="0.8"/>
+</svg>
