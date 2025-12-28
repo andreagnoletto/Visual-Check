@@ -1,0 +1,48 @@
+/* app/assets/css/optotype.css */
+@font-face {
+  font-family: 'OpticianSans';
+  src: url('/fonts/OpticianSans.woff') format('woff'),
+       url('/fonts/Optician-Sans.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+.optotype {
+  font-family: 'OpticianSans', sans-serif;
+  line-height: 1;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.optotype-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.optotype-char {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Rotações para teste direcional (E) */
+.optotype-rotate-0 {
+  transform: rotate(0deg);
+}
+
+.optotype-rotate-90 {
+  transform: rotate(90deg);
+}
+
+.optotype-rotate-180 {
+  transform: rotate(180deg);
+}
+
+.optotype-rotate-270 {
+  transform: rotate(270deg);
+}
