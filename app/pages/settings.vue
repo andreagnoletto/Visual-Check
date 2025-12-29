@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CONFIG, type UiMode } from '~/utils/constants'
 
-const { t, locale, locales } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
 
 definePageMeta({
   title: 'Configurações',
@@ -19,7 +19,7 @@ const languageOptions = computed(() => [
 
 const selectedLanguage = ref<string>(locale.value)
 
-function changeLanguage(code: string) {
+async function changeLanguage(code: string) {
   if (code === 'auto') {
     const browserLang = navigator.language
     const supported = locales.value.map(l => l.code)
@@ -29,9 +29,10 @@ function changeLanguage(code: string) {
       browserLang.toLowerCase().startsWith(s.split('-')[0].toLowerCase()) ||
       s.toLowerCase().startsWith(browserLang.split('-')[0].toLowerCase())
     )
-    locale.value = exactMatch || partialMatch || 'en'
+    const newLocale = exactMatch || partialMatch || 'en'
+    await setLocale(newLocale)
   } else {
-    locale.value = code
+    await setLocale(code)
   }
   selectedLanguage.value = code
 }
