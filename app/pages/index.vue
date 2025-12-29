@@ -15,6 +15,13 @@ const menuItems = computed(() => [
     to: '/tests',
   },
   {
+    title: t('home.testsPro.title'),
+    subtitle: t('home.testsPro.subtitle'),
+    icon: 'mdi-eye-check',
+    to: '/tests-pro',
+    pro: true,
+  },
+  {
     title: t('home.settings.title'),
     subtitle: t('home.settings.subtitle'),
     icon: 'mdi-cog-outline',
@@ -76,12 +83,15 @@ onMounted(() => {
           @focus="focusedIndex = index"
         >
           <template #prepend>
-            <v-avatar color="primary" variant="tonal" size="48">
+            <v-avatar :color="item.pro ? 'primary' : 'primary'" variant="tonal" size="48">
               <v-icon :icon="item.icon" />
             </v-avatar>
           </template>
-          <v-list-item-title class="text-h6">
+          <v-list-item-title class="text-h6 d-flex align-center gap-2">
             {{ item.title }}
+            <v-chip v-if="item.pro" size="x-small" color="primary" variant="flat">
+              PRO
+            </v-chip>
           </v-list-item-title>
           <v-list-item-subtitle>
             {{ item.subtitle }}

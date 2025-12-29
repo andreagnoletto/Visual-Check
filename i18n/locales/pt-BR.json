@@ -15,7 +15,11 @@
     },
     "tests": {
       "title": "Testes de Visão",
-      "subtitle": "Snellen, Pediátrico, Direcional"
+      "subtitle": "Modo assistido com botões"
+    },
+    "testsPro": {
+      "title": "Testes Pro",
+      "subtitle": "Controle manual para profissionais"
     },
     "settings": {
       "title": "Configurações",

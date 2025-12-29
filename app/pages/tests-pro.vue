@@ -2,27 +2,27 @@
 const { t } = useI18n()
 
 definePageMeta({
-  title: 'Testes de Visão',
+  title: 'Testes Pro',
 })
 
 const testItems = computed(() => [
   {
-    title: t('tests.snellen.title'),
-    subtitle: t('tests.snellen.subtitle'),
+    title: t('tests.snellen.proTitle'),
+    subtitle: t('tests.snellen.proSubtitle'),
     icon: 'mdi-format-letter-case',
-    to: '/test/snellen',
+    to: '/test/snellen-pro',
   },
   {
-    title: t('tests.pediatric.title'),
-    subtitle: t('tests.pediatric.subtitle'),
+    title: t('tests.pediatric.proTitle'),
+    subtitle: t('tests.pediatric.proSubtitle'),
     icon: 'mdi-baby-face-outline',
-    to: '/test/pediatric',
+    to: '/test/pediatric-pro',
   },
   {
-    title: t('tests.directional.title'),
-    subtitle: t('tests.directional.subtitle'),
+    title: t('tests.directional.proTitle'),
+    subtitle: t('tests.directional.proSubtitle'),
     icon: 'mdi-arrow-all',
-    to: '/test/directional',
+    to: '/test/directional-pro',
   },
 ])
 
@@ -30,7 +30,7 @@ const focusedIndex = ref(0)
 
 function moveFocus(delta: number) {
   const newIndex = focusedIndex.value + delta
-  if (newIndex >= 0 && newIndex < testItems.length) {
+  if (newIndex >= 0 && newIndex < testItems.value.length) {
     focusedIndex.value = newIndex
     nextTick(() => {
       const items = document.querySelectorAll('.test-item')
@@ -65,10 +65,16 @@ onMounted(() => {
       >
         {{ $t('nav.back') }}
       </v-btn>
-      <h1 class="text-h4 font-weight-bold">
-        <v-icon icon="mdi-eye-outline" class="mr-2" />
-        {{ $t('tests.title') }}
+      <h1 class="text-h4 font-weight-bold d-flex align-center gap-2">
+        <v-icon icon="mdi-eye-check" class="mr-2" />
+        {{ $t('home.testsPro.title') }}
+        <v-chip size="small" color="primary" variant="flat">
+          PRO
+        </v-chip>
       </h1>
+      <p class="text-body-2 text-medium-emphasis mt-2">
+        {{ $t('home.testsPro.subtitle') }}
+      </p>
     </header>
 
     <v-card variant="outlined" class="flex-grow-1">
@@ -83,7 +89,7 @@ onMounted(() => {
           @focus="focusedIndex = index"
         >
           <template #prepend>
-            <v-avatar color="secondary" variant="tonal" size="48">
+            <v-avatar color="primary" variant="tonal" size="48">
               <v-icon :icon="item.icon" />
             </v-avatar>
           </template>
@@ -114,6 +120,6 @@ onMounted(() => {
 }
 
 .test-item:focus-visible {
-  background-color: rgba(var(--v-theme-secondary), 0.12);
+  background-color: rgba(var(--v-theme-primary), 0.12);
 }
 </style>
