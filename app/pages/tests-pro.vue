@@ -7,25 +7,25 @@ definePageMeta({
 
 const testItems = computed(() => [
   {
-    title: t('tests.snellen.proTitle'),
+    title: t('tests.snellen.name'),
     subtitle: t('tests.snellen.proSubtitle'),
     icon: 'mdi-format-letter-case',
     to: '/test/snellen-pro',
   },
   {
-    title: t('tests.pediatric.proTitle'),
+    title: t('tests.pediatric.name'),
     subtitle: t('tests.pediatric.proSubtitle'),
     icon: 'mdi-baby-face-outline',
     to: '/test/pediatric-pro',
   },
   {
-    title: t('tests.directional.proTitle'),
+    title: t('tests.directional.name'),
     subtitle: t('tests.directional.proSubtitle'),
     icon: 'mdi-arrow-all',
     to: '/test/directional-pro',
   },
   {
-    title: t('tests.landolt.proTitle'),
+    title: t('tests.landolt.name'),
     subtitle: t('tests.landolt.proSubtitle'),
     icon: 'mdi-circle-outline',
     to: '/test/landolt-pro',
@@ -71,10 +71,10 @@ onMounted(() => {
       >
         {{ $t('nav.back') }}
       </v-btn>
-      <h1 class="text-h4 font-weight-bold d-flex align-center gap-2">
+      <h1 class="text-h4 font-weight-bold d-flex align-center">
         <v-icon icon="mdi-eye-check" class="mr-2" />
         {{ $t('home.testsPro.title') }}
-        <v-chip size="small" color="primary" variant="flat">
+        <v-chip size="small" color="primary" variant="flat" class="ml-2">
           PRO
         </v-chip>
       </h1>

@@ -12,8 +12,13 @@ const proModeStore = useProModeStore()
 const { uiMode, detectedMode, overrideMode, setOverride } = useUiMode()
 
 // Language options
+const browserLanguage = computed(() => {
+  if (!import.meta.client) return ''
+  return navigator.language
+})
+
 const languageOptions = computed(() => [
-  { code: 'auto', name: t('settings.language.auto') },
+  { code: 'auto', name: `${t('settings.language.auto')} [${browserLanguage.value}]` },
   ...locales.value.map(l => ({ code: l.code, name: l.name })),
 ])
 

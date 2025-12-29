@@ -100,9 +100,9 @@ onMounted(() => {
               <v-icon :icon="item.icon" />
             </v-avatar>
           </template>
-          <v-list-item-title class="text-h6 d-flex align-center gap-2">
+          <v-list-item-title class="text-h6 d-flex align-center">
             {{ item.title }}
-            <v-chip v-if="item.pro" size="x-small" color="primary" variant="flat">
+            <v-chip v-if="item.pro" size="x-small" color="primary" variant="flat" class="ml-2">
               PRO
             </v-chip>
           </v-list-item-title>

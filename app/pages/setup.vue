@@ -85,7 +85,7 @@ function confirmCalibration() {
     calibrationStore.setAspectRatio(SCREEN_PRESETS[selectedPreset.value]!.aspectRatio)
   }
   calibrationStore.completeCalibration()
-  router.push('/tests')
+  router.push('/')
 }
 
 useRemoteNavigation({

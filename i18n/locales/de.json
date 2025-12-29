@@ -29,24 +29,28 @@
   "tests": {
     "title": "Sehtests",
     "snellen": {
+      "name": "Snellen",
       "title": "Snellen (Assistiert)",
       "subtitle": "Klassische Buchstaben mit Antworttasten",
       "proTitle": "Snellen (Pro)",
       "proSubtitle": "Mehrere Buchstaben, manuelle Steuerung"
     },
     "pediatric": {
+      "name": "Pädiatrisch",
       "title": "Pädiatrisch (Assistiert)",
       "subtitle": "Formen für Kinder mit Tasten",
       "proTitle": "Pädiatrisch (Pro)",
       "proSubtitle": "Mehrere Formen, manuelle Steuerung"
     },
     "directional": {
+      "name": "Richtungstest",
       "title": "Richtung (Assistiert)",
       "subtitle": "Buchstabe E in verschiedenen Richtungen",
       "proTitle": "Richtung (Pro)",
       "proSubtitle": "Mehrere Es, manuelle Steuerung"
     },
     "landolt": {
+      "name": "Landolt",
       "title": "Landolt (Assistiert)",
       "subtitle": "Ring C in verschiedenen Richtungen",
       "proTitle": "Landolt (Pro)",

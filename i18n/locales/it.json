@@ -29,24 +29,28 @@
   "tests": {
     "title": "Test visivi",
     "snellen": {
+      "name": "Snellen",
       "title": "Snellen (Assistito)",
       "subtitle": "Lettere classiche con pulsanti di risposta",
       "proTitle": "Snellen (Pro)",
       "proSubtitle": "Più lettere, controllo manuale"
     },
     "pediatric": {
+      "name": "Pediatrico",
       "title": "Pediatrico (Assistito)",
       "subtitle": "Forme per bambini con pulsanti",
       "proTitle": "Pediatrico (Pro)",
       "proSubtitle": "Più forme, controllo manuale"
     },
     "directional": {
+      "name": "Direzionale",
       "title": "Direzionale (Assistito)",
       "subtitle": "Lettera E in diverse direzioni",
       "proTitle": "Direzionale (Pro)",
       "proSubtitle": "Più E, controllo manuale"
     },
     "landolt": {
+      "name": "Landolt",
       "title": "Landolt (Assistito)",
       "subtitle": "Anello C in diverse direzioni",
       "proTitle": "Landolt (Pro)",

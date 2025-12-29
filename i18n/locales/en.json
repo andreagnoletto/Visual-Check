@@ -29,24 +29,28 @@
   "tests": {
     "title": "Vision Tests",
     "snellen": {
+      "name": "Snellen",
       "title": "Snellen (Assisted)",
       "subtitle": "Classic letters with response buttons",
       "proTitle": "Snellen (Pro)",
       "proSubtitle": "Multiple letters, manual control"
     },
     "pediatric": {
+      "name": "Pediatric",
       "title": "Pediatric (Assisted)",
       "subtitle": "Shapes for children with buttons",
       "proTitle": "Pediatric (Pro)",
       "proSubtitle": "Multiple shapes, manual control"
     },
     "directional": {
+      "name": "Directional",
       "title": "Directional (Assisted)",
       "subtitle": "Letter E in different orientations",
       "proTitle": "Directional (Pro)",
       "proSubtitle": "Multiple E's, manual control"
     },
     "landolt": {
+      "name": "Landolt",
       "title": "Landolt (Assisted)",
       "subtitle": "Ring C in different orientations",
       "proTitle": "Landolt (Pro)",
