@@ -1,0 +1,216 @@
+{
+  "app": {
+    "name": "Visual Check",
+    "tagline": "Dépistage basique de l'acuité visuelle"
+  },
+  "nav": {
+    "back": "Retour",
+    "navigate": "Naviguer",
+    "confirm": "Confirmer"
+  },
+  "home": {
+    "calibrate": {
+      "title": "Calibrer l'écran",
+      "subtitle": "Configurer distance et résolution"
+    },
+    "tests": {
+      "title": "Tests de vision",
+      "subtitle": "Mode assisté avec boutons"
+    },
+    "testsPro": {
+      "title": "Tests Pro",
+      "subtitle": "Contrôle manuel pour professionnels"
+    },
+    "settings": {
+      "title": "Paramètres",
+      "subtitle": "Préférences de l'app"
+    }
+  },
+  "tests": {
+    "title": "Tests de vision",
+    "snellen": {
+      "title": "Snellen (Assisté)",
+      "subtitle": "Lettres classiques avec boutons de réponse",
+      "proTitle": "Snellen (Pro)",
+      "proSubtitle": "Plusieurs lettres, contrôle manuel"
+    },
+    "pediatric": {
+      "title": "Pédiatrique (Assisté)",
+      "subtitle": "Formes pour enfants avec boutons",
+      "proTitle": "Pédiatrique (Pro)",
+      "proSubtitle": "Plusieurs formes, contrôle manuel"
+    },
+    "directional": {
+      "title": "Directionnel (Assisté)",
+      "subtitle": "Lettre E dans différentes orientations",
+      "proTitle": "Directionnel (Pro)",
+      "proSubtitle": "Plusieurs E, contrôle manuel"
+    },
+    "proBadge": "PRO",
+    "instructions": {
+      "title": "Instructions",
+      "snellen": {
+        "step1": "Les lettres seront affichées une à la fois",
+        "step2": "Choisissez la lettre correspondante dans les boutons ci-dessous",
+        "step3": "Le test avancera automatiquement",
+        "step4": "Maintenez la distance calibrée ({distance}m)"
+      },
+      "directional": {
+        "step1": "La lettre \"E\" sera affichée dans différentes orientations",
+        "step2": "Indiquez vers où pointent les \"branches\" du E",
+        "step3": "Utilisez les touches fléchées/manette ou les boutons",
+        "step4": "Maintenez la distance calibrée ({distance}m)"
+      },
+      "pediatric": {
+        "step1": "Les formes seront affichées une à la fois",
+        "step2": "Choisissez la forme correspondante dans les boutons ci-dessous",
+        "step3": "Le test avancera automatiquement",
+        "step4": "Maintenez la distance calibrée ({distance}m)"
+      }
+    },
+    "startTest": "Démarrer le test",
+    "line": "Ligne",
+    "attempt": "Tentative"
+  },
+  "results": {
+    "title": "Test terminé",
+    "bestAcuity": "Meilleure acuité atteinte :",
+    "decimal": "Décimal",
+    "logMAR": "LogMAR",
+    "noLineCompleted": "Aucune ligne n'a été complétée avec succès.",
+    "adjustSuggestion": "Envisagez d'ajuster la distance ou la calibration.",
+    "detailsByLine": "Détails par ligne :",
+    "restart": "Refaire le test",
+    "exit": "Quitter"
+  },
+  "setup": {
+    "title": "Calibration",
+    "subtitle": "Configurer la distance et la résolution de l'écran",
+    "zoomWarning": "Le zoom du navigateur peut invalider la calibration. Utilisez 100%.",
+    "distance": {
+      "title": "1. Distance de l'observateur",
+      "label": "Distance à l'écran",
+      "minWarning": "Minimum recommandé : {min}m",
+      "maxWarning": "Maximum recommandé : {max}m"
+    },
+    "method": {
+      "title": "2. Méthode de calibration",
+      "preset": "Préréglage d'écran",
+      "card": "Carte de crédit"
+    },
+    "preset": {
+      "title": "3. Taille de l'écran"
+    },
+    "card": {
+      "title": "3. Ajuster avec carte de crédit",
+      "description": "Placez une carte de crédit sur l'écran et ajustez jusqu'à ce que la barre bleue ait exactement la même largeur (85,6mm)."
+    },
+    "density": {
+      "label": "Densité",
+      "calculated": "Densité calculée",
+      "lowWarning": "Densité trop basse ({value} px/mm)",
+      "highWarning": "Densité trop élevée ({value} px/mm)"
+    },
+    "confirm": "Confirmer la calibration",
+    "reset": {
+      "title": "Réinitialiser la calibration ?",
+      "message": "Cela effacera tous les paramètres de calibration."
+    }
+  },
+  "settings": {
+    "title": "Paramètres",
+    "uiMode": {
+      "title": "Mode d'interface",
+      "detected": "Détecté",
+      "current": "Actuel",
+      "auto": "Automatique",
+      "autoSubtitle": "Détection automatique",
+      "tv": "TV / Télécommande",
+      "tvSubtitle": "Navigation D-pad",
+      "desktop": "Bureau",
+      "desktopSubtitle": "Souris et clavier",
+      "touch": "Tactile",
+      "touchSubtitle": "Écran tactile"
+    },
+    "calibration": {
+      "title": "Calibration",
+      "correctionFactor": "Facteur de correction",
+      "description": "Affiner la taille des optotypes",
+      "reset": "Réinitialiser la calibration",
+      "calibrated": "Calibré",
+      "notCalibrated": "Non calibré"
+    },
+    "appearance": {
+      "title": "Apparence",
+      "highContrast": "Contraste élevé",
+      "highContrastDescription": "Thème noir et blanc pur pour une meilleure visibilité"
+    },
+    "language": {
+      "title": "Langue",
+      "auto": "Automatique (navigateur)",
+      "pt-BR": "Português (Brasil)",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "it": "Italiano"
+    },
+    "proMode": {
+      "title": "Mode professionnel",
+      "enable": "Activer le mode professionnel",
+      "enableDescription": "Verrouillage par PIN, compteur de tests",
+      "lockSettings": "Verrouiller les paramètres",
+      "lockSettingsDescription": "Nécessite un PIN pour modifier",
+      "lockCalibration": "Verrouiller la calibration",
+      "lockCalibrationDescription": "Nécessite un PIN pour recalibrer",
+      "changePin": "Changer le PIN",
+      "currentPin": "PIN actuel",
+      "testCounter": "Compteur de tests",
+      "testsCompleted": "{count} test(s) effectué(s)",
+      "lastTest": "Dernier"
+    }
+  },
+  "disclaimer": {
+    "title": "⚠️ ATTENTION",
+    "text": "Cette app est UNIQUEMENT pour un dépistage/entraînement basique. Elle ne remplace PAS un examen ophtalmologique.",
+    "extended": "Ne pas utiliser pour des décisions critiques (ex. : conduire). Les résultats varient selon l'éclairage, la distance, le zoom du navigateur et les paramètres d'écran."
+  },
+  "pin": {
+    "enterPin": "Entrer le PIN",
+    "newPin": "Nouveau PIN",
+    "confirmPin": "Confirmer le PIN",
+    "wrongPin": "PIN incorrect",
+    "pinMismatch": "Les PINs ne correspondent pas",
+    "wrongPinRemaining": "PIN incorrect. {remaining} tentative(s) restante(s).",
+    "tooManyAttempts": "Trop de tentatives. Bloqué pendant 5 minutes.",
+    "locked": "Bloqué. Veuillez patienter {time}",
+    "lockedFor": "Bloqué pendant {time}",
+    "cancel": "Annuler",
+    "confirm": "Confirmer"
+  },
+  "pro": {
+    "larger": "Plus grand",
+    "smaller": "Plus petit",
+    "newLetters": "Nouvelles lettres",
+    "exit": "Quitter",
+    "toggleTheme": "Changer de thème",
+    "hints": {
+      "up": "↑ plus grand",
+      "down": "↓ plus petit",
+      "right": "→ nouvelles",
+      "left": "← quitter"
+    }
+  },
+  "common": {
+    "loading": "Chargement...",
+    "loadingFont": "Chargement de la police...",
+    "error": "Erreur",
+    "success": "Succès",
+    "yes": "Oui",
+    "no": "Non",
+    "ok": "OK",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "reset": "Réinitialiser"
+  }
+}

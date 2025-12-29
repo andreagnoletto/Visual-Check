@@ -150,7 +150,10 @@
       "auto": "Automático (navegador)",
       "pt-BR": "Português (Brasil)",
       "en": "English",
-      "es": "Español"
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "it": "Italiano"
     },
     "proMode": {
       "title": "Modo Profissional",

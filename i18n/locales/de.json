@@ -1,0 +1,216 @@
+{
+  "app": {
+    "name": "Visual Check",
+    "tagline": "Grundlegende Sehschärfeprüfung"
+  },
+  "nav": {
+    "back": "Zurück",
+    "navigate": "Navigieren",
+    "confirm": "Bestätigen"
+  },
+  "home": {
+    "calibrate": {
+      "title": "Bildschirm kalibrieren",
+      "subtitle": "Entfernung und Auflösung einstellen"
+    },
+    "tests": {
+      "title": "Sehtests",
+      "subtitle": "Assistierter Modus mit Tasten"
+    },
+    "testsPro": {
+      "title": "Sehtests Pro",
+      "subtitle": "Manuelle Steuerung für Profis"
+    },
+    "settings": {
+      "title": "Einstellungen",
+      "subtitle": "App-Einstellungen"
+    }
+  },
+  "tests": {
+    "title": "Sehtests",
+    "snellen": {
+      "title": "Snellen (Assistiert)",
+      "subtitle": "Klassische Buchstaben mit Antworttasten",
+      "proTitle": "Snellen (Pro)",
+      "proSubtitle": "Mehrere Buchstaben, manuelle Steuerung"
+    },
+    "pediatric": {
+      "title": "Pädiatrisch (Assistiert)",
+      "subtitle": "Formen für Kinder mit Tasten",
+      "proTitle": "Pädiatrisch (Pro)",
+      "proSubtitle": "Mehrere Formen, manuelle Steuerung"
+    },
+    "directional": {
+      "title": "Richtung (Assistiert)",
+      "subtitle": "Buchstabe E in verschiedenen Richtungen",
+      "proTitle": "Richtung (Pro)",
+      "proSubtitle": "Mehrere Es, manuelle Steuerung"
+    },
+    "proBadge": "PRO",
+    "instructions": {
+      "title": "Anleitung",
+      "snellen": {
+        "step1": "Die Buchstaben werden einzeln angezeigt",
+        "step2": "Wählen Sie den passenden Buchstaben aus den Tasten unten",
+        "step3": "Der Test wird automatisch fortgesetzt",
+        "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
+      },
+      "directional": {
+        "step1": "Der Buchstabe \"E\" wird in verschiedenen Richtungen angezeigt",
+        "step2": "Geben Sie an, wohin die \"Beine\" des E zeigen",
+        "step3": "Verwenden Sie Pfeiltasten/Controller oder die Tasten",
+        "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
+      },
+      "pediatric": {
+        "step1": "Die Formen werden einzeln angezeigt",
+        "step2": "Wählen Sie die passende Form aus den Tasten unten",
+        "step3": "Der Test wird automatisch fortgesetzt",
+        "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
+      }
+    },
+    "startTest": "Test starten",
+    "line": "Zeile",
+    "attempt": "Versuch"
+  },
+  "results": {
+    "title": "Test abgeschlossen",
+    "bestAcuity": "Beste erreichte Sehschärfe:",
+    "decimal": "Dezimal",
+    "logMAR": "LogMAR",
+    "noLineCompleted": "Keine Zeile wurde erfolgreich abgeschlossen.",
+    "adjustSuggestion": "Erwägen Sie, den Abstand oder die Kalibrierung anzupassen.",
+    "detailsByLine": "Details pro Zeile:",
+    "restart": "Test wiederholen",
+    "exit": "Beenden"
+  },
+  "setup": {
+    "title": "Kalibrierung",
+    "subtitle": "Entfernung und Bildschirmauflösung einstellen",
+    "zoomWarning": "Browser-Zoom kann die Kalibrierung ungültig machen. Verwenden Sie 100%.",
+    "distance": {
+      "title": "1. Beobachterabstand",
+      "label": "Abstand zum Bildschirm",
+      "minWarning": "Empfohlenes Minimum: {min}m",
+      "maxWarning": "Empfohlenes Maximum: {max}m"
+    },
+    "method": {
+      "title": "2. Kalibrierungsmethode",
+      "preset": "Bildschirmvoreinstellung",
+      "card": "Kreditkarte"
+    },
+    "preset": {
+      "title": "3. Bildschirmgröße"
+    },
+    "card": {
+      "title": "3. Mit Kreditkarte anpassen",
+      "description": "Legen Sie eine Kreditkarte auf den Bildschirm und passen Sie an, bis der blaue Balken genau die gleiche Breite hat (85,6mm)."
+    },
+    "density": {
+      "label": "Dichte",
+      "calculated": "Berechnete Dichte",
+      "lowWarning": "Dichte zu niedrig ({value} px/mm)",
+      "highWarning": "Dichte zu hoch ({value} px/mm)"
+    },
+    "confirm": "Kalibrierung bestätigen",
+    "reset": {
+      "title": "Kalibrierung zurücksetzen?",
+      "message": "Dies löscht alle Kalibrierungseinstellungen."
+    }
+  },
+  "settings": {
+    "title": "Einstellungen",
+    "uiMode": {
+      "title": "Oberflächenmodus",
+      "detected": "Erkannt",
+      "current": "Aktuell",
+      "auto": "Automatisch",
+      "autoSubtitle": "Automatisch erkennen",
+      "tv": "TV / Fernbedienung",
+      "tvSubtitle": "D-Pad-Navigation",
+      "desktop": "Desktop",
+      "desktopSubtitle": "Maus und Tastatur",
+      "touch": "Touch",
+      "touchSubtitle": "Touchscreen"
+    },
+    "calibration": {
+      "title": "Kalibrierung",
+      "correctionFactor": "Korrekturfaktor",
+      "description": "Optotypengröße fein einstellen",
+      "reset": "Kalibrierung zurücksetzen",
+      "calibrated": "Kalibriert",
+      "notCalibrated": "Nicht kalibriert"
+    },
+    "appearance": {
+      "title": "Erscheinungsbild",
+      "highContrast": "Hoher Kontrast",
+      "highContrastDescription": "Reines Schwarz-Weiß-Thema für bessere Sichtbarkeit"
+    },
+    "language": {
+      "title": "Sprache",
+      "auto": "Automatisch (Browser)",
+      "pt-BR": "Português (Brasil)",
+      "en": "English",
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "it": "Italiano"
+    },
+    "proMode": {
+      "title": "Professioneller Modus",
+      "enable": "Professionellen Modus aktivieren",
+      "enableDescription": "PIN-Sperre, Testzähler",
+      "lockSettings": "Einstellungen sperren",
+      "lockSettingsDescription": "PIN zum Ändern erforderlich",
+      "lockCalibration": "Kalibrierung sperren",
+      "lockCalibrationDescription": "PIN zum Neukalibrieren erforderlich",
+      "changePin": "PIN ändern",
+      "currentPin": "Aktuelle PIN",
+      "testCounter": "Testzähler",
+      "testsCompleted": "{count} Test(s) durchgeführt",
+      "lastTest": "Letzter"
+    }
+  },
+  "disclaimer": {
+    "title": "⚠️ WARNUNG",
+    "text": "Diese App ist NUR für grundlegendes Screening/Training. Sie ersetzt KEINE augenärztliche Untersuchung.",
+    "extended": "Nicht für kritische Entscheidungen verwenden (z.B. Autofahren). Ergebnisse variieren je nach Beleuchtung, Abstand, Browser-Zoom und Bildschirmeinstellungen."
+  },
+  "pin": {
+    "enterPin": "PIN eingeben",
+    "newPin": "Neue PIN",
+    "confirmPin": "PIN bestätigen",
+    "wrongPin": "Falsche PIN",
+    "pinMismatch": "PINs stimmen nicht überein",
+    "wrongPinRemaining": "Falsche PIN. {remaining} Versuch(e) übrig.",
+    "tooManyAttempts": "Zu viele Versuche. 5 Minuten gesperrt.",
+    "locked": "Gesperrt. Bitte warten {time}",
+    "lockedFor": "Gesperrt für {time}",
+    "cancel": "Abbrechen",
+    "confirm": "Bestätigen"
+  },
+  "pro": {
+    "larger": "Größer",
+    "smaller": "Kleiner",
+    "newLetters": "Neue Buchstaben",
+    "exit": "Beenden",
+    "toggleTheme": "Thema wechseln",
+    "hints": {
+      "up": "↑ größer",
+      "down": "↓ kleiner",
+      "right": "→ neue",
+      "left": "← beenden"
+    }
+  },
+  "common": {
+    "loading": "Laden...",
+    "loadingFont": "Schriftart laden...",
+    "error": "Fehler",
+    "success": "Erfolg",
+    "yes": "Ja",
+    "no": "Nein",
+    "ok": "OK",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "reset": "Zurücksetzen"
+  }
+}

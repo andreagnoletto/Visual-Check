@@ -17,6 +17,9 @@ export default defineNuxtConfig({
       { code: 'pt-BR', name: 'Português (Brasil)', file: 'pt-BR.json' },
       { code: 'en', name: 'English', file: 'en.json' },
       { code: 'es', name: 'Español', file: 'es.json' },
+      { code: 'fr', name: 'Français', file: 'fr.json' },
+      { code: 'de', name: 'Deutsch', file: 'de.json' },
+      { code: 'it', name: 'Italiano', file: 'it.json' },
     ],
     defaultLocale: 'pt-BR',
     bundle: {

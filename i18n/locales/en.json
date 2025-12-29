@@ -150,7 +150,10 @@
       "auto": "Automatic (browser)",
       "pt-BR": "Português (Brasil)",
       "en": "English",
-      "es": "Español"
+      "es": "Español",
+      "fr": "Français",
+      "de": "Deutsch",
+      "it": "Italiano"
     },
     "proMode": {
       "title": "Professional Mode",
