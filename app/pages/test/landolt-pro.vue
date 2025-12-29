@@ -1,159 +1,40 @@
 <script setup lang="ts">
-import { onMounted, ref, computed, onUnmounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { onMounted, ref } from 'vue'
+import { useProAcuityTest } from '~/composables/useProAcuityTest'
+import { useFontReady } from '~/composables/useFontReady'
 import { useCalibrationStore } from '~/stores/calibration'
-import { useProModeStore } from '~/stores/proMode'
-import { normalizeInput } from '~/utils/normalizeInput'
-import { CONFIG, type ProTestTheme } from '~/utils/constants'
-import {
-  ACUITY_LINES,
-  calculateOptotypeSize,
-  type AcuityLine,
-} from '~/utils/optotypeCalculations'
+import { CONFIG } from '~/utils/constants'
+import { ACUITY_LINES } from '~/utils/optotypeCalculations'
 
 const { t } = useI18n()
 
 definePageMeta({
-  title: 'Pediátrico Pro',
+  title: 'Landolt Pro',
   layout: false,
 })
 
-const router = useRouter()
 const calibration = useCalibrationStore()
-const proModeStore = useProModeStore()
+const { isLoading: fontLoading } = useFontReady()
 
-// Formas pediátricas
-const PEDIATRIC_SHAPES = [
-  { id: 'circle', icon: 'mdi-circle' },
-  { id: 'square', icon: 'mdi-square' },
-  { id: 'triangle', icon: 'mdi-triangle' },
-  { id: 'heart', icon: 'mdi-heart' },
-  { id: 'star', icon: 'mdi-star' },
-] as const
-
-type ShapeId = (typeof PEDIATRIC_SHAPES)[number]['id']
-
-// Estado
-const isActive = ref(false)
-const currentLineIndex = ref(CONFIG.PRO_START_LINE_INDEX)
-const currentShapes = ref<ShapeId[]>([])
-const theme = ref<ProTestTheme>('day')
-
-// Computed
-const currentLine = computed((): AcuityLine => {
-  return ACUITY_LINES[currentLineIndex.value] ?? ACUITY_LINES[0]!
-})
-
-const optotypeSize = computed(() => {
-  return calculateOptotypeSize(
-    calibration.distanceM,
-    calibration.pxPerMm,
-    currentLine.value.logMAR,
-    calibration.correctionFactor
-  )
-})
-
-// Sempre 5 formas por linha no modo Pro
-const shapesPerLine = computed(() => CONFIG.PRO_MAX_CHARS)
-
-const canGoSmaller = computed(() => currentLineIndex.value < ACUITY_LINES.length - 1)
-const canGoLarger = computed(() => currentLineIndex.value > 0)
-
-const themeStyles = computed(() => {
-  if (theme.value === 'day') {
-    return { background: '#FFFFFF', color: '#000000' }
-  }
-  return { background: '#000000', color: '#FFFFFF' }
-})
-
-// Ações
-function generateShapes() {
-  const count = shapesPerLine.value
-  const shapes: ShapeId[] = []
-  let lastShape: ShapeId | undefined
-
-  for (let i = 0; i < count; i++) {
-    const available = PEDIATRIC_SHAPES.filter(s => s.id !== lastShape)
-    const randomIndex = Math.floor(Math.random() * available.length)
-    const shape = available[randomIndex]!
-    shapes.push(shape.id)
-    lastShape = shape.id
-  }
-
-  currentShapes.value = shapes
-}
-
-function start() {
-  isActive.value = true
-  currentLineIndex.value = CONFIG.PRO_START_LINE_INDEX
-  generateShapes()
-}
-
-function exit() {
-  isActive.value = false
-  proModeStore.incrementTestCount()
-  router.push('/tests-pro')
-}
-
-function goSmaller() {
-  if (canGoSmaller.value) {
-    currentLineIndex.value++
-    generateShapes()
-  }
-}
-
-function goLarger() {
-  if (canGoLarger.value) {
-    currentLineIndex.value--
-    generateShapes()
-  }
-}
-
-function randomize() {
-  generateShapes()
-}
-
-function toggleTheme() {
-  theme.value = theme.value === 'night' ? 'day' : 'night'
-}
-
-function goToLine(index: number) {
-  if (index >= 0 && index < ACUITY_LINES.length) {
-    currentLineIndex.value = index
-    generateShapes()
-  }
-}
-
-function getShapeIcon(id: ShapeId): string {
-  return PEDIATRIC_SHAPES.find(s => s.id === id)?.icon ?? 'mdi-circle'
-}
-
-// Navegação por teclado
-function handleKeyDown(event: KeyboardEvent) {
-  if (!isActive.value) return
-
-  const action = normalizeInput(event)
-  if (!action) return
-
-  event.preventDefault()
-
-  switch (action) {
-    case 'down':
-      goSmaller()
-      break
-    case 'up':
-      goLarger()
-      break
-    case 'right':
-    case 'confirm':
-      randomize()
-      break
-    case 'left':
-    case 'back':
-      exit()
-      break
-  }
-}
+const {
+  isActive,
+  currentLine,
+  currentSequence,
+  currentDirections,
+  optotypeSize,
+  charsPerLine,
+  theme,
+  themeStyles,
+  canGoSmaller,
+  canGoLarger,
+  start,
+  exit,
+  goSmaller,
+  goLarger,
+  randomize,
+  toggleTheme,
+  goToLine,
+} = useProAcuityTest({ optotypeType: 'landolt' })
 
 // Mostrar/ocultar controles touch
 const showControls = ref(true)
@@ -172,15 +53,10 @@ function handleScreenTap() {
   showControlsTemporarily()
 }
 
-// Lifecycle
+// Iniciar teste automaticamente ao montar
 onMounted(() => {
-  window.addEventListener('keydown', handleKeyDown)
   start()
   showControlsTemporarily()
-})
-
-onUnmounted(() => {
-  window.removeEventListener('keydown', handleKeyDown)
 })
 </script>
 
@@ -193,8 +69,13 @@ onUnmounted(() => {
     }"
     @click="handleScreenTap"
   >
+    <!-- Loading fonte -->
+    <div v-if="fontLoading" class="loading-overlay">
+      <v-progress-circular indeterminate size="64" :color="themeStyles.color" />
+    </div>
+
     <!-- Teste ativo -->
-    <template v-if="isActive">
+    <template v-else-if="isActive">
       <!-- Indicadores de acuidade (sempre visíveis) -->
       <div class="top-indicators">
         <span class="indicator acuity">{{ currentLine.snellen }}</span>
@@ -202,17 +83,17 @@ onUnmounted(() => {
         <span class="indicator">logMAR {{ currentLine.logMAR }}</span>
       </div>
 
-      <!-- Área central com formas -->
+      <!-- Área central com optótipos -->
       <div class="optotype-area">
         <div 
           class="optotype-line"
           :style="{ gap: `${optotypeSize.fontSizePx * CONFIG.PRO_CHAR_SPACING}px` }"
         >
-          <v-icon
-            v-for="(shapeId, index) in currentShapes"
+          <LandoltC
+            v-for="(direction, index) in currentDirections"
             :key="index"
-            :icon="getShapeIcon(shapeId)"
             :size="optotypeSize.fontSizePx"
+            :direction="direction"
             :color="themeStyles.color"
           />
         </div>
@@ -290,7 +171,7 @@ onUnmounted(() => {
         </div>
       </div>
 
-      <!-- Hint D-pad -->
+      <!-- Hint D-pad (apenas quando controles visíveis) -->
       <div class="dpad-hint" :class="{ 'visible': showControls }">
         <span>{{ $t('pro.hints.up') }}</span>
         <span>{{ $t('pro.hints.down') }}</span>
@@ -316,6 +197,14 @@ onUnmounted(() => {
   user-select: none;
 }
 
+.loading-overlay {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
 /* Indicadores de acuidade */
 .top-indicators {
   position: absolute;
@@ -339,7 +228,7 @@ onUnmounted(() => {
   opacity: 0.9;
 }
 
-/* Área das formas */
+/* Área dos optótipos */
 .optotype-area {
   display: flex;
   align-items: center;

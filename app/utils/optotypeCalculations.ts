@@ -29,6 +29,7 @@ export const OPTOTYPE_POOLS = {
   snellen: ['C', 'D', 'E', 'F', 'L', 'O', 'P', 'T', 'Z'],
   directional: ['E'], // Usado com rotações
   pediatric: ['●', '■', '▲', '♥', '★'],
+  landolt: ['C'], // Anel de Landolt - usado com rotações
 } as const
 
 export type OptotypeType = keyof typeof OPTOTYPE_POOLS

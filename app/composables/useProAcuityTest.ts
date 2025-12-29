@@ -87,8 +87,8 @@ export function useProAcuityTest(options: UseProAcuityTestOptions) {
     const lastChar = currentSequence.value[currentSequence.value.length - 1]
     currentSequence.value = generateRandomSequence(pool, count, lastChar)
     
-    // Para teste direcional, gerar direções também
-    if (options.optotypeType === 'directional') {
+    // Para teste direcional e landolt, gerar direções também
+    if (options.optotypeType === 'directional' || options.optotypeType === 'landolt') {
       const newDirections: Direction[] = []
       let lastDirection: Direction | undefined
       for (let i = 0; i < count; i++) {
@@ -109,7 +109,7 @@ export function useProAcuityTest(options: UseProAcuityTestOptions) {
   function exit() {
     isActive.value = false
     proModeStore.incrementTestCount()
-    router.push('/tests')
+    router.push('/tests-pro')
   }
 
   function goSmaller() {

@@ -1,39 +1,52 @@
 <script setup lang="ts">
-const { t } = useI18n()
+import { useProModeStore } from '~/stores/proMode'
 
-const menuItems = computed(() => [
-  {
-    title: t('home.calibrate.title'),
-    subtitle: t('home.calibrate.subtitle'),
-    icon: 'mdi-tune',
-    to: '/setup',
-  },
-  {
-    title: t('home.tests.title'),
-    subtitle: t('home.tests.subtitle'),
-    icon: 'mdi-eye-outline',
-    to: '/tests',
-  },
-  {
-    title: t('home.testsPro.title'),
-    subtitle: t('home.testsPro.subtitle'),
-    icon: 'mdi-eye-check',
-    to: '/tests-pro',
-    pro: true,
-  },
-  {
-    title: t('home.settings.title'),
-    subtitle: t('home.settings.subtitle'),
-    icon: 'mdi-cog-outline',
-    to: '/settings',
-  },
-])
+const { t } = useI18n()
+const proModeStore = useProModeStore()
+
+const menuItems = computed(() => {
+  const items = [
+    {
+      title: t('home.calibrate.title'),
+      subtitle: t('home.calibrate.subtitle'),
+      icon: 'mdi-tune',
+      to: '/setup',
+    },
+    {
+      title: t('home.tests.title'),
+      subtitle: t('home.tests.subtitle'),
+      icon: 'mdi-eye-outline',
+      to: '/tests',
+      assistedOnly: true, // Não mostrar quando Pro mode ativo
+    },
+    {
+      title: t('home.testsPro.title'),
+      subtitle: t('home.testsPro.subtitle'),
+      icon: 'mdi-eye-check',
+      to: '/tests-pro',
+      pro: true,
+    },
+    {
+      title: t('home.settings.title'),
+      subtitle: t('home.settings.subtitle'),
+      icon: 'mdi-cog-outline',
+      to: '/settings',
+    },
+  ]
+  
+  // Quando Pro mode está ativo, esconder testes assistidos
+  if (proModeStore.isProModeEnabled) {
+    return items.filter(item => !item.assistedOnly)
+  }
+  
+  return items
+})
 
 const focusedIndex = ref(0)
 
 function moveFocus(delta: number) {
   const newIndex = focusedIndex.value + delta
-  if (newIndex >= 0 && newIndex < menuItems.length) {
+  if (newIndex >= 0 && newIndex < menuItems.value.length) {
     focusedIndex.value = newIndex
     nextTick(() => {
       const items = document.querySelectorAll('.menu-item')

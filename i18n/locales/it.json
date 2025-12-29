@@ -46,6 +46,12 @@
       "proTitle": "Direzionale (Pro)",
       "proSubtitle": "Più E, controllo manuale"
     },
+    "landolt": {
+      "title": "Landolt (Assistito)",
+      "subtitle": "Anello C in diverse direzioni",
+      "proTitle": "Landolt (Pro)",
+      "proSubtitle": "Più anelli, controllo manuale"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Istruzioni",
@@ -65,6 +71,12 @@
         "step1": "Le forme verranno visualizzate una alla volta",
         "step2": "Scegli la forma corrispondente dai pulsanti sottostanti",
         "step3": "Il test avanzerà automaticamente",
+        "step4": "Mantieni la distanza calibrata ({distance}m)"
+      },
+      "landolt": {
+        "step1": "L'anello C verrà mostrato in diverse direzioni",
+        "step2": "Indica verso quale direzione punta l'apertura dell'anello",
+        "step3": "Usa le frecce o i pulsanti direzionali",
         "step4": "Mantieni la distanza calibrata ({distance}m)"
       }
     },

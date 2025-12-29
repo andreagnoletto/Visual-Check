@@ -24,6 +24,12 @@ const testItems = computed(() => [
     icon: 'mdi-arrow-all',
     to: '/test/directional-pro',
   },
+  {
+    title: t('tests.landolt.proTitle'),
+    subtitle: t('tests.landolt.proSubtitle'),
+    icon: 'mdi-circle-outline',
+    to: '/test/landolt-pro',
+  },
 ])
 
 const focusedIndex = ref(0)

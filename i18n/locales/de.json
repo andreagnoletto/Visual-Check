@@ -46,6 +46,12 @@
       "proTitle": "Richtung (Pro)",
       "proSubtitle": "Mehrere Es, manuelle Steuerung"
     },
+    "landolt": {
+      "title": "Landolt (Assistiert)",
+      "subtitle": "Ring C in verschiedenen Richtungen",
+      "proTitle": "Landolt (Pro)",
+      "proSubtitle": "Mehrere Ringe, manuelle Steuerung"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Anleitung",
@@ -65,6 +71,12 @@
         "step1": "Die Formen werden einzeln angezeigt",
         "step2": "Wählen Sie die passende Form aus den Tasten unten",
         "step3": "Der Test wird automatisch fortgesetzt",
+        "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
+      },
+      "landolt": {
+        "step1": "Der Ring C wird in verschiedenen Richtungen angezeigt",
+        "step2": "Geben Sie an, wohin die Öffnung des Rings zeigt",
+        "step3": "Verwenden Sie Pfeile oder die Richtungstasten",
         "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
       }
     },
