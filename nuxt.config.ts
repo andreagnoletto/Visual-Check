@@ -41,7 +41,7 @@ export default defineNuxtConfig({
       ],
     },
     workbox: {
-      navigateFallback: '/',
+      navigateFallback: null,
       globPatterns: ['**/*.{js,css,html,svg,png,ico,woff,woff2,otf}'],
       runtimeCaching: [
         {
@@ -61,8 +61,7 @@ export default defineNuxtConfig({
       installPrompt: true,
     },
     devOptions: {
-      enabled: true,
-      type: 'module',
+      enabled: false,
     },
   },
 
@@ -89,11 +88,12 @@ export default defineNuxtConfig({
         { name: 'description', content: 'App de triagem básica de acuidade visual' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         { name: 'theme-color', content: '#1976D2' },
-        { name: 'apple-mobile-web-app-capable', content: 'yes' },
+        { name: 'mobile-web-app-capable', content: 'yes' },
         { name: 'apple-mobile-web-app-status-bar-style', content: 'black-translucent' },
         { name: 'apple-mobile-web-app-title', content: 'Visual Check' },
       ],
       link: [
+        { rel: 'manifest', href: '/manifest.webmanifest' },
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.svg' },
         { rel: 'mask-icon', href: '/icon.svg', color: '#1976D2' },
       ],
