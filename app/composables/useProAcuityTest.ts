@@ -31,7 +31,7 @@ export function useProAcuityTest(options: UseProAcuityTestOptions) {
   const currentLineIndex = ref(CONFIG.PRO_START_LINE_INDEX)
   const currentSequence = ref<string[]>([])
   const currentDirections = ref<Direction[]>([])
-  const theme = ref<ProTestTheme>('night')
+  const theme = ref<ProTestTheme>('day')
   
   const pool = OPTOTYPE_POOLS[options.optotypeType]
 
