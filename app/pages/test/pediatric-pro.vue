@@ -37,7 +37,7 @@ type ShapeId = (typeof PEDIATRIC_SHAPES)[number]['id']
 const isActive = ref(false)
 const currentLineIndex = ref(CONFIG.PRO_START_LINE_INDEX)
 const currentShapes = ref<ShapeId[]>([])
-const theme = ref<ProTestTheme>('night')
+const theme = ref<ProTestTheme>('day')
 
 // Computed
 const currentLine = computed((): AcuityLine => {
