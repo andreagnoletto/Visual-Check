@@ -1,24 +1,26 @@
 <script setup lang="ts">
-const menuItems = [
+const { t } = useI18n()
+
+const menuItems = computed(() => [
   {
-    title: 'Calibrar Tela',
-    subtitle: 'Configure distância e resolução',
+    title: t('home.calibrate.title'),
+    subtitle: t('home.calibrate.subtitle'),
     icon: 'mdi-tune',
     to: '/setup',
   },
   {
-    title: 'Testes de Visão',
-    subtitle: 'Snellen, Pediátrico, Direcional',
+    title: t('home.tests.title'),
+    subtitle: t('home.tests.subtitle'),
     icon: 'mdi-eye-outline',
     to: '/tests',
   },
   {
-    title: 'Configurações',
-    subtitle: 'Preferências do app',
+    title: t('home.settings.title'),
+    subtitle: t('home.settings.subtitle'),
     icon: 'mdi-cog-outline',
     to: '/settings',
   },
-]
+])
 
 const focusedIndex = ref(0)
 
@@ -54,10 +56,10 @@ onMounted(() => {
     <header class="text-center mb-6">
       <h1 class="text-h4 text-md-h3 font-weight-bold mb-2">
         <v-icon icon="mdi-eye" class="mr-2" />
-        TV Visual Check
+        {{ $t('app.name') }}
       </h1>
       <p class="text-body-1 text-medium-emphasis">
-        Triagem básica de acuidade visual
+        {{ $t('app.tagline') }}
       </p>
     </header>
 

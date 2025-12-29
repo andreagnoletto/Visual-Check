@@ -1,0 +1,209 @@
+{
+  "app": {
+    "name": "Visual Check",
+    "tagline": "Basic visual acuity screening"
+  },
+  "nav": {
+    "back": "Back",
+    "navigate": "Navigate",
+    "confirm": "Confirm"
+  },
+  "home": {
+    "calibrate": {
+      "title": "Calibrate Screen",
+      "subtitle": "Set up distance and resolution"
+    },
+    "tests": {
+      "title": "Vision Tests",
+      "subtitle": "Snellen, Pediatric, Directional"
+    },
+    "settings": {
+      "title": "Settings",
+      "subtitle": "App preferences"
+    }
+  },
+  "tests": {
+    "title": "Vision Tests",
+    "snellen": {
+      "title": "Snellen (Assisted)",
+      "subtitle": "Classic letters with response buttons",
+      "proTitle": "Snellen (Pro)",
+      "proSubtitle": "Multiple letters, manual control"
+    },
+    "pediatric": {
+      "title": "Pediatric (Assisted)",
+      "subtitle": "Shapes for children with buttons",
+      "proTitle": "Pediatric (Pro)",
+      "proSubtitle": "Multiple shapes, manual control"
+    },
+    "directional": {
+      "title": "Directional (Assisted)",
+      "subtitle": "Letter E in different orientations",
+      "proTitle": "Directional (Pro)",
+      "proSubtitle": "Multiple E's, manual control"
+    },
+    "proBadge": "PRO",
+    "instructions": {
+      "title": "Instructions",
+      "snellen": {
+        "step1": "Letters will be displayed one at a time",
+        "step2": "Choose the matching letter from the buttons below",
+        "step3": "The test will advance automatically",
+        "step4": "Maintain the calibrated distance ({distance}m)"
+      },
+      "directional": {
+        "step1": "The letter \"E\" will be shown in different orientations",
+        "step2": "Indicate which direction the \"legs\" of the E point",
+        "step3": "Use arrow keys/controller or tap the buttons",
+        "step4": "Maintain the calibrated distance ({distance}m)"
+      },
+      "pediatric": {
+        "step1": "Shapes will be displayed one at a time",
+        "step2": "Choose the matching shape from the buttons below",
+        "step3": "The test will advance automatically",
+        "step4": "Maintain the calibrated distance ({distance}m)"
+      }
+    },
+    "startTest": "Start Test",
+    "line": "Line",
+    "attempt": "Attempt"
+  },
+  "results": {
+    "title": "Test Complete",
+    "bestAcuity": "Best acuity achieved:",
+    "decimal": "Decimal",
+    "logMAR": "LogMAR",
+    "noLineCompleted": "No line was completed successfully.",
+    "adjustSuggestion": "Consider adjusting the distance or calibration.",
+    "detailsByLine": "Details by line:",
+    "restart": "Retry Test",
+    "exit": "Exit"
+  },
+  "setup": {
+    "title": "Calibration",
+    "subtitle": "Configure distance and screen resolution",
+    "zoomWarning": "Browser zoom may invalidate calibration. Use 100%.",
+    "distance": {
+      "title": "1. Observer distance",
+      "label": "Distance to screen",
+      "minWarning": "Minimum recommended: {min}m",
+      "maxWarning": "Maximum recommended: {max}m"
+    },
+    "method": {
+      "title": "2. Calibration method",
+      "preset": "Screen Preset",
+      "card": "Credit Card"
+    },
+    "preset": {
+      "title": "3. Screen size"
+    },
+    "card": {
+      "title": "3. Adjust with credit card",
+      "description": "Place a credit card on the screen and adjust until the blue bar is exactly the same width (85.6mm)."
+    },
+    "density": {
+      "label": "Density",
+      "calculated": "Calculated density",
+      "lowWarning": "Density too low ({value} px/mm)",
+      "highWarning": "Density too high ({value} px/mm)"
+    },
+    "confirm": "Confirm Calibration",
+    "reset": {
+      "title": "Reset Calibration?",
+      "message": "This will erase all calibration settings."
+    }
+  },
+  "settings": {
+    "title": "Settings",
+    "uiMode": {
+      "title": "Interface Mode",
+      "detected": "Detected",
+      "current": "Current",
+      "auto": "Automatic",
+      "autoSubtitle": "Detect automatically",
+      "tv": "TV / Remote",
+      "tvSubtitle": "D-pad navigation",
+      "desktop": "Desktop",
+      "desktopSubtitle": "Mouse and keyboard",
+      "touch": "Touch",
+      "touchSubtitle": "Touch screen"
+    },
+    "calibration": {
+      "title": "Calibration",
+      "correctionFactor": "Correction Factor",
+      "description": "Fine-tune optotype size",
+      "reset": "Reset Calibration",
+      "calibrated": "Calibrated",
+      "notCalibrated": "Not calibrated"
+    },
+    "appearance": {
+      "title": "Appearance",
+      "highContrast": "High Contrast",
+      "highContrastDescription": "Pure black and white theme for better visibility"
+    },
+    "language": {
+      "title": "Language",
+      "auto": "Automatic (browser)",
+      "pt-BR": "Português (Brasil)",
+      "en": "English",
+      "es": "Español"
+    },
+    "proMode": {
+      "title": "Professional Mode",
+      "enable": "Enable Professional Mode",
+      "enableDescription": "PIN lock, test counter",
+      "lockSettings": "Lock Settings",
+      "lockSettingsDescription": "Requires PIN to change",
+      "lockCalibration": "Lock Calibration",
+      "lockCalibrationDescription": "Requires PIN to recalibrate",
+      "changePin": "Change PIN",
+      "currentPin": "Current PIN",
+      "testCounter": "Test Counter",
+      "testsCompleted": "{count} test(s) completed",
+      "lastTest": "Last"
+    }
+  },
+  "disclaimer": {
+    "title": "⚠️ WARNING",
+    "text": "This app is ONLY for basic screening/training. It does NOT replace an eye exam.",
+    "extended": "Do not use for critical decisions (e.g., driving). Results vary by lighting, distance, browser zoom, and screen settings."
+  },
+  "pin": {
+    "enterPin": "Enter PIN",
+    "newPin": "New PIN",
+    "confirmPin": "Confirm PIN",
+    "wrongPin": "Wrong PIN",
+    "pinMismatch": "PINs do not match",
+    "wrongPinRemaining": "Wrong PIN. {remaining} attempt(s) remaining.",
+    "tooManyAttempts": "Too many attempts. Locked for 5 minutes.",
+    "locked": "Locked. Please wait {time}",
+    "lockedFor": "Locked for {time}",
+    "cancel": "Cancel",
+    "confirm": "Confirm"
+  },
+  "pro": {
+    "larger": "Larger",
+    "smaller": "Smaller",
+    "newLetters": "New letters",
+    "exit": "Exit",
+    "toggleTheme": "Toggle theme",
+    "hints": {
+      "up": "↑ larger",
+      "down": "↓ smaller",
+      "right": "→ new",
+      "left": "← exit"
+    }
+  },
+  "common": {
+    "loading": "Loading...",
+    "loadingFont": "Loading font...",
+    "error": "Error",
+    "success": "Success",
+    "yes": "Yes",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancel",
+    "save": "Save",
+    "reset": "Reset"
+  }
+}

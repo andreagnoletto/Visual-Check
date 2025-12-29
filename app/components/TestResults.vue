@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { AcuityLine } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 interface TestResult {
   line: AcuityLine
   correct: number
@@ -28,7 +30,7 @@ const emit = defineEmits<{
         size="48"
         class="mb-2"
       />
-      <div>Teste Concluído</div>
+      <div>{{ t('results.title') }}</div>
     </v-card-title>
 
     <v-card-text>
@@ -39,11 +41,11 @@ const emit = defineEmits<{
         variant="tonal"
         class="mb-4"
       >
-        <div class="text-h6 mb-1">Melhor acuidade alcançada:</div>
+        <div class="text-h6 mb-1">{{ t('results.bestAcuity') }}</div>
         <div class="text-h4 font-weight-bold">{{ bestResult.line.snellen }}</div>
         <div class="text-body-2 mt-1">
-          Decimal: {{ bestResult.line.decimalVA }} | 
-          LogMAR: {{ bestResult.line.logMAR }}
+          {{ t('results.decimal') }}: {{ bestResult.line.decimalVA }} | 
+          {{ t('results.logMAR') }}: {{ bestResult.line.logMAR }}
         </div>
       </v-alert>
 
@@ -54,15 +56,15 @@ const emit = defineEmits<{
         class="mb-4"
       >
         <div class="text-body-1">
-          Nenhuma linha foi completada com sucesso.
+          {{ t('results.noLineCompleted') }}
         </div>
         <div class="text-body-2 mt-1">
-          Considere ajustar a distância ou calibração.
+          {{ t('results.adjustSuggestion') }}
         </div>
       </v-alert>
 
       <!-- Detalhes por linha -->
-      <div class="text-subtitle-2 mb-2">Detalhes por linha:</div>
+      <div class="text-subtitle-2 mb-2">{{ t('results.detailsByLine') }}</div>
       <v-list density="compact" class="bg-transparent">
         <v-list-item
           v-for="result in results"
@@ -91,7 +93,7 @@ const emit = defineEmits<{
         icon="mdi-information"
       >
         <div class="text-caption">
-          ⚠️ Este é apenas um teste de triagem. Consulte um oftalmologista para avaliação profissional.
+          {{ t('disclaimer.text') }}
         </div>
       </v-alert>
     </v-card-text>
@@ -102,7 +104,7 @@ const emit = defineEmits<{
         prepend-icon="mdi-arrow-left"
         @click="emit('exit')"
       >
-        Voltar
+        {{ t('results.exit') }}
       </v-btn>
       <v-btn
         color="primary"
@@ -110,7 +112,7 @@ const emit = defineEmits<{
         prepend-icon="mdi-refresh"
         @click="emit('restart')"
       >
-        Refazer Teste
+        {{ t('results.restart') }}
       </v-btn>
     </v-card-actions>
   </v-card>

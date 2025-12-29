@@ -1,0 +1,209 @@
+{
+  "app": {
+    "name": "Visual Check",
+    "tagline": "Evaluación básica de agudeza visual"
+  },
+  "nav": {
+    "back": "Volver",
+    "navigate": "Navegar",
+    "confirm": "Confirmar"
+  },
+  "home": {
+    "calibrate": {
+      "title": "Calibrar Pantalla",
+      "subtitle": "Configure distancia y resolución"
+    },
+    "tests": {
+      "title": "Pruebas de Visión",
+      "subtitle": "Snellen, Pediátrico, Direccional"
+    },
+    "settings": {
+      "title": "Configuración",
+      "subtitle": "Preferencias de la app"
+    }
+  },
+  "tests": {
+    "title": "Pruebas de Visión",
+    "snellen": {
+      "title": "Snellen (Asistido)",
+      "subtitle": "Letras clásicas con botones de respuesta",
+      "proTitle": "Snellen (Pro)",
+      "proSubtitle": "Múltiples letras, control manual"
+    },
+    "pediatric": {
+      "title": "Pediátrico (Asistido)",
+      "subtitle": "Formas para niños con botones",
+      "proTitle": "Pediátrico (Pro)",
+      "proSubtitle": "Múltiples formas, control manual"
+    },
+    "directional": {
+      "title": "Direccional (Asistido)",
+      "subtitle": "Letra E en diferentes direcciones",
+      "proTitle": "Direccional (Pro)",
+      "proSubtitle": "Múltiples E, control manual"
+    },
+    "proBadge": "PRO",
+    "instructions": {
+      "title": "Instrucciones",
+      "snellen": {
+        "step1": "Las letras se mostrarán una a la vez",
+        "step2": "Elija la letra correspondiente en los botones de abajo",
+        "step3": "La prueba avanzará automáticamente",
+        "step4": "Mantenga la distancia calibrada ({distance}m)"
+      },
+      "directional": {
+        "step1": "La letra \"E\" se mostrará en diferentes direcciones",
+        "step2": "Indique hacia dónde apuntan las \"patas\" de la E",
+        "step3": "Use las flechas del teclado/control o toque los botones",
+        "step4": "Mantenga la distancia calibrada ({distance}m)"
+      },
+      "pediatric": {
+        "step1": "Las formas se mostrarán una a la vez",
+        "step2": "Elija la forma correspondiente en los botones de abajo",
+        "step3": "La prueba avanzará automáticamente",
+        "step4": "Mantenga la distancia calibrada ({distance}m)"
+      }
+    },
+    "startTest": "Iniciar Prueba",
+    "line": "Línea",
+    "attempt": "Intento"
+  },
+  "results": {
+    "title": "Prueba Completada",
+    "bestAcuity": "Mejor agudeza alcanzada:",
+    "decimal": "Decimal",
+    "logMAR": "LogMAR",
+    "noLineCompleted": "Ninguna línea fue completada con éxito.",
+    "adjustSuggestion": "Considere ajustar la distancia o calibración.",
+    "detailsByLine": "Detalles por línea:",
+    "restart": "Repetir Prueba",
+    "exit": "Salir"
+  },
+  "setup": {
+    "title": "Calibración",
+    "subtitle": "Configure la distancia y resolución de pantalla",
+    "zoomWarning": "El zoom del navegador puede invalidar la calibración. Use 100%.",
+    "distance": {
+      "title": "1. Distancia del observador",
+      "label": "Distancia a la pantalla",
+      "minWarning": "Mínimo recomendado: {min}m",
+      "maxWarning": "Máximo recomendado: {max}m"
+    },
+    "method": {
+      "title": "2. Método de calibración",
+      "preset": "Preset de Pantalla",
+      "card": "Tarjeta de Crédito"
+    },
+    "preset": {
+      "title": "3. Tamaño de pantalla"
+    },
+    "card": {
+      "title": "3. Ajuste con tarjeta de crédito",
+      "description": "Coloque una tarjeta de crédito en la pantalla y ajuste hasta que la barra azul tenga exactamente el mismo ancho (85.6mm)."
+    },
+    "density": {
+      "label": "Densidad",
+      "calculated": "Densidad calculada",
+      "lowWarning": "Densidad muy baja ({value} px/mm)",
+      "highWarning": "Densidad muy alta ({value} px/mm)"
+    },
+    "confirm": "Confirmar Calibración",
+    "reset": {
+      "title": "¿Reiniciar Calibración?",
+      "message": "Esto borrará todas las configuraciones de calibración."
+    }
+  },
+  "settings": {
+    "title": "Configuración",
+    "uiMode": {
+      "title": "Modo de Interfaz",
+      "detected": "Detectado",
+      "current": "Actual",
+      "auto": "Automático",
+      "autoSubtitle": "Detectar automáticamente",
+      "tv": "TV / Control",
+      "tvSubtitle": "Navegación por D-pad",
+      "desktop": "Escritorio",
+      "desktopSubtitle": "Ratón y teclado",
+      "touch": "Táctil",
+      "touchSubtitle": "Pantalla táctil"
+    },
+    "calibration": {
+      "title": "Calibración",
+      "correctionFactor": "Factor de Corrección",
+      "description": "Ajuste fino del tamaño de los optotipos",
+      "reset": "Reiniciar Calibración",
+      "calibrated": "Calibrado",
+      "notCalibrated": "No calibrado"
+    },
+    "appearance": {
+      "title": "Apariencia",
+      "highContrast": "Alto Contraste",
+      "highContrastDescription": "Tema blanco y negro puro para mejor visibilidad"
+    },
+    "language": {
+      "title": "Idioma",
+      "auto": "Automático (navegador)",
+      "pt-BR": "Português (Brasil)",
+      "en": "English",
+      "es": "Español"
+    },
+    "proMode": {
+      "title": "Modo Profesional",
+      "enable": "Activar Modo Profesional",
+      "enableDescription": "Bloqueo por PIN, contador de pruebas",
+      "lockSettings": "Bloquear Configuración",
+      "lockSettingsDescription": "Requiere PIN para cambiar",
+      "lockCalibration": "Bloquear Calibración",
+      "lockCalibrationDescription": "Requiere PIN para recalibrar",
+      "changePin": "Cambiar PIN",
+      "currentPin": "PIN actual",
+      "testCounter": "Contador de Pruebas",
+      "testsCompleted": "{count} prueba(s) realizada(s)",
+      "lastTest": "Última"
+    }
+  },
+  "disclaimer": {
+    "title": "⚠️ ATENCIÓN",
+    "text": "Esta app es SOLO para evaluación básica/entrenamiento. NO sustituye un examen oftalmológico.",
+    "extended": "No use para decisiones críticas (ej.: conducir). Los resultados varían según iluminación, distancia, zoom del navegador y configuración de pantalla."
+  },
+  "pin": {
+    "enterPin": "Ingrese el PIN",
+    "newPin": "Nuevo PIN",
+    "confirmPin": "Confirmar PIN",
+    "wrongPin": "PIN incorrecto",
+    "pinMismatch": "Los PINs no coinciden",
+    "wrongPinRemaining": "PIN incorrecto. {remaining} intento(s) restante(s).",
+    "tooManyAttempts": "Demasiados intentos. Bloqueado por 5 minutos.",
+    "locked": "Bloqueado. Espere {time}",
+    "lockedFor": "Bloqueado por {time}",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar"
+  },
+  "pro": {
+    "larger": "Más grande",
+    "smaller": "Más pequeño",
+    "newLetters": "Nuevas letras",
+    "exit": "Salir",
+    "toggleTheme": "Cambiar tema",
+    "hints": {
+      "up": "↑ mayor",
+      "down": "↓ menor",
+      "right": "→ nuevas",
+      "left": "← salir"
+    }
+  },
+  "common": {
+    "loading": "Cargando...",
+    "loadingFont": "Cargando fuente...",
+    "error": "Error",
+    "success": "Éxito",
+    "yes": "Sí",
+    "no": "No",
+    "ok": "OK",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "reset": "Reiniciar"
+  }
+}

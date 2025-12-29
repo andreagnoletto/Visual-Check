@@ -8,13 +8,35 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'pinia-plugin-persistedstate/nuxt',
     '@vite-pwa/nuxt',
+    '@nuxtjs/i18n',
   ],
+
+  // i18n Configuration
+  i18n: {
+    locales: [
+      { code: 'pt-BR', name: 'Português (Brasil)', file: 'pt-BR.json' },
+      { code: 'en', name: 'English', file: 'en.json' },
+      { code: 'es', name: 'Español', file: 'es.json' },
+    ],
+    defaultLocale: 'pt-BR',
+    bundle: {
+      optimizeTranslationDirective: true,
+    },
+    langDir: 'locales',
+    strategy: 'no_prefix',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_locale',
+      fallbackLocale: 'en',
+      alwaysRedirect: false,
+    },
+  },
 
   // PWA Configuration
   pwa: {
     registerType: 'autoUpdate',
     manifest: {
-      name: 'TV Visual Check',
+      name: 'Visual Check',
       short_name: 'Visual Check',
       description: 'Triagem básica de acuidade visual para TVs e dispositivos',
       theme_color: '#1976D2',
@@ -83,7 +105,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      title: 'TV Visual Check',
+      title: 'Visual Check',
       meta: [
         { name: 'description', content: 'App de triagem básica de acuidade visual' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },

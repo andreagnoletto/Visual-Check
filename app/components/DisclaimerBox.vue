@@ -1,4 +1,6 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 defineProps<{
   compact?: boolean
 }>()
@@ -13,15 +15,13 @@ defineProps<{
     border="start"
   >
     <template #title>
-      <span v-if="!compact" class="text-subtitle-1 font-weight-bold">⚠️ ATENÇÃO</span>
+      <span v-if="!compact" class="text-subtitle-1 font-weight-bold">{{ t('disclaimer.title') }}</span>
     </template>
     <div :class="compact ? 'text-caption' : 'text-body-2'">
-      Este app é <strong>APENAS</strong> para triagem básica/treino.
-      <strong>NÃO</strong> substitui exame oftalmológico.
+      {{ t('disclaimer.text') }}
       <template v-if="!compact">
         <br />
-        Não use para decisões críticas (ex.: dirigir). Resultados variam por iluminação,
-        distância, zoom do navegador e configuração da tela.
+        {{ t('disclaimer.extended') }}
       </template>
     </div>
   </v-alert>

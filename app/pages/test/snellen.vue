@@ -8,6 +8,8 @@ import { useProModeStore } from '~/stores/proMode'
 import { normalizeInput } from '~/utils/normalizeInput'
 import { OPTOTYPE_POOLS } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Teste Snellen',
 })
@@ -124,7 +126,7 @@ watch(phase, (newPhase) => {
     <!-- Loading fonte -->
     <div v-if="fontLoading" class="d-flex flex-column align-center justify-center fill-height">
       <v-progress-circular indeterminate size="64" color="primary" />
-      <p class="mt-4 text-medium-emphasis">Carregando fonte...</p>
+      <p class="mt-4 text-medium-emphasis">{{ $t('common.loadingFont') }}</p>
     </div>
 
     <!-- Tela inicial -->
@@ -136,28 +138,28 @@ watch(phase, (newPhase) => {
           to="/tests"
           class="mb-4"
         >
-          Voltar
+          {{ $t('nav.back') }}
         </v-btn>
-        <h1 class="text-h4 font-weight-bold">Teste Snellen</h1>
+        <h1 class="text-h4 font-weight-bold">{{ $t('tests.snellen.title') }}</h1>
       </header>
 
       <v-card class="flex-grow-1 d-flex flex-column align-center justify-center pa-8">
         <v-icon icon="mdi-format-letter-case" size="80" color="primary" class="mb-6" />
         
-        <h2 class="text-h5 mb-4 text-center">Instruções</h2>
+        <h2 class="text-h5 mb-4 text-center">{{ $t('tests.instructions.title') }}</h2>
         
         <v-list class="bg-transparent mb-6" max-width="500">
           <v-list-item prepend-icon="mdi-numeric-1-circle">
-            <v-list-item-title>Uma letra será exibida na tela</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.snellen.step1') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-2-circle">
-            <v-list-item-title>Identifique a letra e selecione a resposta</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.snellen.step2') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-3-circle">
-            <v-list-item-title>O teste avança enquanto você acertar</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.snellen.step3') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-4-circle">
-            <v-list-item-title>Mantenha a distância calibrada ({{ calibration.distanceM }}m)</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.snellen.step4', { distance: calibration.distanceM }) }}</v-list-item-title>
           </v-list-item>
         </v-list>
 
@@ -167,7 +169,7 @@ watch(phase, (newPhase) => {
           prepend-icon="mdi-play"
           @click="startTest"
         >
-          Iniciar Teste
+          {{ $t('tests.startTest') }}
         </v-btn>
       </v-card>
 
@@ -181,13 +183,13 @@ watch(phase, (newPhase) => {
       <!-- Progress bar -->
       <div class="test-header d-flex align-center justify-space-between mb-4">
         <v-chip variant="outlined" size="small">
-          Linha {{ progress.line }}/{{ progress.totalLines }}
+          {{ $t('tests.line') }} {{ progress.line }}/{{ progress.totalLines }}
         </v-chip>
         <v-chip variant="outlined" size="small">
           {{ currentLine.snellen }}
         </v-chip>
         <v-chip variant="outlined" size="small">
-          {{ progress.char }}/{{ progress.charsInLine }}
+          {{ $t('tests.attempt') }} {{ progress.char }}/{{ progress.charsInLine }}
         </v-chip>
       </div>
 

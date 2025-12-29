@@ -49,7 +49,7 @@ test.describe('Navigation', () => {
     await page.goto('/')
     
     // Aguardar carregamento
-    await expect(page.getByRole('heading', { name: /tv visual check/i })).toBeVisible()
+    await expect(page.getByRole('heading', { name: /visual check/i })).toBeVisible()
     
     // Verificar se os links principais estão visíveis (são links, não buttons)
     await expect(page.getByRole('link', { name: /calibrar/i })).toBeVisible()

@@ -1,49 +1,51 @@
 <script setup lang="ts">
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Testes de Visão',
 })
 
-const testItems = [
+const testItems = computed(() => [
   {
-    title: 'Snellen (Assistido)',
-    subtitle: 'Letras clássicas com botões de resposta',
+    title: t('tests.snellen.title'),
+    subtitle: t('tests.snellen.subtitle'),
     icon: 'mdi-format-letter-case',
     to: '/test/snellen',
   },
   {
-    title: 'Snellen (Pro)',
-    subtitle: 'Múltiplas letras, controle manual',
+    title: t('tests.snellen.proTitle'),
+    subtitle: t('tests.snellen.proSubtitle'),
     icon: 'mdi-format-letter-case',
     to: '/test/snellen-pro',
     pro: true,
   },
   {
-    title: 'Pediátrico (Assistido)',
-    subtitle: 'Formas para crianças com botões',
+    title: t('tests.pediatric.title'),
+    subtitle: t('tests.pediatric.subtitle'),
     icon: 'mdi-baby-face-outline',
     to: '/test/pediatric',
   },
   {
-    title: 'Pediátrico (Pro)',
-    subtitle: 'Múltiplas formas, controle manual',
+    title: t('tests.pediatric.proTitle'),
+    subtitle: t('tests.pediatric.proSubtitle'),
     icon: 'mdi-baby-face-outline',
     to: '/test/pediatric-pro',
     pro: true,
   },
   {
-    title: 'Direcional (Assistido)',
-    subtitle: 'Letra E em diferentes direções',
+    title: t('tests.directional.title'),
+    subtitle: t('tests.directional.subtitle'),
     icon: 'mdi-arrow-all',
     to: '/test/directional',
   },
   {
-    title: 'Direcional (Pro)',
-    subtitle: 'Múltiplos E, controle manual',
+    title: t('tests.directional.proTitle'),
+    subtitle: t('tests.directional.proSubtitle'),
     icon: 'mdi-arrow-all',
     to: '/test/directional-pro',
     pro: true,
   },
-]
+])
 
 const focusedIndex = ref(0)
 
@@ -82,15 +84,12 @@ onMounted(() => {
         to="/"
         class="mb-4"
       >
-        Voltar
+        {{ $t('nav.back') }}
       </v-btn>
       <h1 class="text-h4 font-weight-bold">
         <v-icon icon="mdi-eye-outline" class="mr-2" />
-        Testes de Visão
+        {{ $t('tests.title') }}
       </h1>
-      <p class="text-body-1 text-medium-emphasis mt-2">
-        Escolha um tipo de teste
-      </p>
     </header>
 
     <v-card variant="outlined" class="flex-grow-1">

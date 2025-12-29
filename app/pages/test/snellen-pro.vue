@@ -6,6 +6,8 @@ import { useCalibrationStore } from '~/stores/calibration'
 import { CONFIG } from '~/utils/constants'
 import { ACUITY_LINES } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Snellen Pro',
   layout: false,
@@ -103,7 +105,7 @@ onMounted(() => {
         <button 
           class="control-btn top-left"
           @click.stop="exit"
-          aria-label="Sair"
+          :aria-label="$t('pro.exit')"
         >
           <v-icon icon="mdi-arrow-left" :color="themeStyles.color" />
         </button>
@@ -112,7 +114,7 @@ onMounted(() => {
         <button 
           class="control-btn top-right"
           @click.stop="toggleTheme"
-          aria-label="Alternar tema"
+          :aria-label="$t('pro.toggleTheme')"
         >
           <v-icon 
             :icon="theme === 'night' ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'" 
@@ -125,7 +127,7 @@ onMounted(() => {
           class="control-btn center-left"
           :disabled="!canGoLarger"
           @click.stop="goLarger"
-          aria-label="Letra maior"
+          :aria-label="$t('pro.larger')"
         >
           <v-icon icon="mdi-arrow-up" :color="themeStyles.color" />
         </button>
@@ -135,7 +137,7 @@ onMounted(() => {
           class="control-btn center-right"
           :disabled="!canGoSmaller"
           @click.stop="goSmaller"
-          aria-label="Letra menor"
+          :aria-label="$t('pro.smaller')"
         >
           <v-icon icon="mdi-arrow-down" :color="themeStyles.color" />
         </button>
@@ -144,7 +146,7 @@ onMounted(() => {
         <button 
           class="control-btn bottom-right"
           @click.stop="randomize"
-          aria-label="Novas letras"
+          :aria-label="$t('pro.newLetters')"
         >
           <v-icon icon="mdi-refresh" :color="themeStyles.color" />
         </button>
@@ -171,10 +173,10 @@ onMounted(() => {
 
       <!-- Hint D-pad (apenas quando controles visíveis) -->
       <div class="dpad-hint" :class="{ 'visible': showControls }">
-        <span>↑ maior</span>
-        <span>↓ menor</span>
-        <span>→ novas</span>
-        <span>← sair</span>
+        <span>{{ $t('pro.hints.up') }}</span>
+        <span>{{ $t('pro.hints.down') }}</span>
+        <span>{{ $t('pro.hints.right') }}</span>
+        <span>{{ $t('pro.hints.left') }}</span>
       </div>
     </template>
   </div>

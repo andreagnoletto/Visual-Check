@@ -10,6 +10,8 @@ import {
   type AcuityLine,
 } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Teste Pediátrico',
 })
@@ -231,9 +233,9 @@ watch(phase, (newPhase) => {
           to="/tests"
           class="mb-4"
         >
-          Voltar
+          {{ $t('nav.back') }}
         </v-btn>
-        <h1 class="text-h4 font-weight-bold">Teste Pediátrico</h1>
+        <h1 class="text-h4 font-weight-bold">{{ $t('tests.pediatric.title') }}</h1>
       </header>
 
       <v-card class="flex-grow-1 d-flex flex-column align-center justify-center pa-8">
@@ -247,20 +249,20 @@ watch(phase, (newPhase) => {
           />
         </div>
         
-        <h2 class="text-h5 mb-4 text-center">Instruções</h2>
+        <h2 class="text-h5 mb-4 text-center">{{ $t('tests.instructions.title') }}</h2>
         
         <v-list class="bg-transparent mb-6" max-width="500">
           <v-list-item prepend-icon="mdi-numeric-1-circle">
-            <v-list-item-title>Uma forma será exibida na tela</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.pediatric.step1') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-2-circle">
-            <v-list-item-title>A criança deve identificar a forma mostrada</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.pediatric.step2') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-3-circle">
-            <v-list-item-title>Toque ou selecione a forma correspondente</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.pediatric.step3') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-4-circle">
-            <v-list-item-title>Mantenha a distância calibrada ({{ calibration.distanceM }}m)</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.pediatric.step4', { distance: calibration.distanceM }) }}</v-list-item-title>
           </v-list-item>
         </v-list>
 
@@ -270,7 +272,7 @@ watch(phase, (newPhase) => {
           prepend-icon="mdi-play"
           @click="startTest"
         >
-          Iniciar Teste
+          {{ $t('tests.startTest') }}
         </v-btn>
       </v-card>
 
@@ -284,13 +286,13 @@ watch(phase, (newPhase) => {
       <!-- Progress bar -->
       <div class="test-header d-flex align-center justify-space-between mb-4">
         <v-chip variant="outlined" size="small">
-          Linha {{ progress.line }}/{{ progress.totalLines }}
+          {{ $t('tests.line') }} {{ progress.line }}/{{ progress.totalLines }}
         </v-chip>
         <v-chip variant="outlined" size="small">
           {{ currentLine.snellen }}
         </v-chip>
         <v-chip variant="outlined" size="small">
-          {{ progress.attempt }}/{{ progress.attemptsInLine }}
+          {{ $t('tests.attempt') }} {{ progress.attempt }}/{{ progress.attemptsInLine }}
         </v-chip>
       </div>
 

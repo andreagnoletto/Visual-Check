@@ -11,6 +11,8 @@ import {
   type AcuityLine,
 } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Pediátrico Pro',
   layout: false,
@@ -222,7 +224,7 @@ onUnmounted(() => {
         <button 
           class="control-btn top-left"
           @click.stop="exit"
-          aria-label="Sair"
+          :aria-label="$t('pro.exit')"
         >
           <v-icon icon="mdi-arrow-left" :color="themeStyles.color" />
         </button>
@@ -231,7 +233,7 @@ onUnmounted(() => {
         <button 
           class="control-btn top-right"
           @click.stop="toggleTheme"
-          aria-label="Alternar tema"
+          :aria-label="$t('pro.toggleTheme')"
         >
           <v-icon 
             :icon="theme === 'night' ? 'mdi-white-balance-sunny' : 'mdi-moon-waning-crescent'" 
@@ -244,7 +246,7 @@ onUnmounted(() => {
           class="control-btn center-left"
           :disabled="!canGoLarger"
           @click.stop="goLarger"
-          aria-label="Maior"
+          :aria-label="$t('pro.larger')"
         >
           <v-icon icon="mdi-arrow-up" :color="themeStyles.color" />
         </button>
@@ -254,7 +256,7 @@ onUnmounted(() => {
           class="control-btn center-right"
           :disabled="!canGoSmaller"
           @click.stop="goSmaller"
-          aria-label="Menor"
+          :aria-label="$t('pro.smaller')"
         >
           <v-icon icon="mdi-arrow-down" :color="themeStyles.color" />
         </button>
@@ -263,7 +265,7 @@ onUnmounted(() => {
         <button 
           class="control-btn bottom-right"
           @click.stop="randomize"
-          aria-label="Novas formas"
+          :aria-label="$t('pro.newLetters')"
         >
           <v-icon icon="mdi-refresh" :color="themeStyles.color" />
         </button>
@@ -290,10 +292,10 @@ onUnmounted(() => {
 
       <!-- Hint D-pad -->
       <div class="dpad-hint" :class="{ 'visible': showControls }">
-        <span>↑ maior</span>
-        <span>↓ menor</span>
-        <span>→ novas</span>
-        <span>← sair</span>
+        <span>{{ $t('pro.hints.up') }}</span>
+        <span>{{ $t('pro.hints.down') }}</span>
+        <span>{{ $t('pro.hints.right') }}</span>
+        <span>{{ $t('pro.hints.left') }}</span>
       </div>
     </template>
   </div>

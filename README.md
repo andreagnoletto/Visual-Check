@@ -1,4 +1,4 @@
-# 👁️ TV Visual Check
+# 👁️ Visual Check
 
 > Aplicativo de triagem básica e treino de acuidade visual para Smart TVs, desktops e dispositivos touch.
 

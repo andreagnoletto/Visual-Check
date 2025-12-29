@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const { isTv, isDesktop } = useUiMode()
+const { t } = useI18n()
 
 const showHint = computed(() => isTv.value || isDesktop.value)
 </script>
@@ -10,15 +11,15 @@ const showHint = computed(() => isTv.value || isDesktop.value)
       <div class="d-flex align-center ga-1">
         <v-icon size="small" icon="mdi-arrow-up-down" />
         <v-icon size="small" icon="mdi-arrow-left-right" />
-        <span class="text-caption">Navegar</span>
+        <span class="text-caption">{{ t('nav.navigate') }}</span>
       </div>
       <div class="d-flex align-center ga-1">
         <v-kbd>Enter</v-kbd>
-        <span class="text-caption">Confirmar</span>
+        <span class="text-caption">{{ t('nav.confirm') }}</span>
       </div>
       <div class="d-flex align-center ga-1">
         <v-kbd>Esc</v-kbd>
-        <span class="text-caption">Voltar</span>
+        <span class="text-caption">{{ t('nav.back') }}</span>
       </div>
     </div>
   </v-fade-transition>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { CONFIG, type UiMode } from '~/utils/constants'
 
+const { t, locale, locales } = useI18n()
+
 definePageMeta({
   title: 'Configurações',
 })
@@ -9,13 +11,33 @@ const calibrationStore = useCalibrationStore()
 const proModeStore = useProModeStore()
 const { uiMode, detectedMode, overrideMode, setOverride } = useUiMode()
 
+// Language options
+const languageOptions = computed(() => [
+  { code: 'auto', name: t('settings.language.auto') },
+  ...locales.value.map(l => ({ code: l.code, name: l.name })),
+])
+
+const selectedLanguage = ref<string>(locale.value)
+
+function changeLanguage(code: string) {
+  if (code === 'auto') {
+    const browserLang = navigator.language
+    const supported = locales.value.map(l => l.code)
+    const match = supported.find(s => browserLang.startsWith(s.split('-')[0]))
+    locale.value = match || 'en'
+  } else {
+    locale.value = code
+  }
+  selectedLanguage.value = code
+}
+
 // UI Mode options
-const uiModeOptions: { value: UiMode | 'auto'; title: string; subtitle: string }[] = [
-  { value: 'auto', title: 'Automático', subtitle: 'Detectar automaticamente' },
-  { value: 'tv', title: 'TV / Remoto', subtitle: 'Navegação por D-pad' },
-  { value: 'desktop', title: 'Desktop', subtitle: 'Mouse e teclado' },
-  { value: 'touch', title: 'Touch', subtitle: 'Tela sensível ao toque' },
-]
+const uiModeOptions = computed(() => [
+  { value: 'auto' as const, title: t('settings.uiMode.auto'), subtitle: t('settings.uiMode.autoSubtitle') },
+  { value: 'tv' as UiMode, title: t('settings.uiMode.tv'), subtitle: t('settings.uiMode.tvSubtitle') },
+  { value: 'desktop' as UiMode, title: t('settings.uiMode.desktop'), subtitle: t('settings.uiMode.desktopSubtitle') },
+  { value: 'touch' as UiMode, title: t('settings.uiMode.touch'), subtitle: t('settings.uiMode.touchSubtitle') },
+])
 
 const selectedUiMode = computed({
   get: () => overrideMode.value ?? 'auto',
@@ -167,22 +189,53 @@ onMounted(() => {
         to="/"
         class="mb-4"
       >
-        Voltar
+        {{ $t('nav.back') }}
       </v-btn>
       <h1 class="text-h4 font-weight-bold">
         <v-icon icon="mdi-cog-outline" class="mr-2" />
-        Configurações
+        {{ $t('settings.title') }}
       </h1>
     </header>
+
+    <!-- Language -->
+    <v-card variant="outlined" class="mb-4">
+      <v-card-title class="text-subtitle-1">
+        <v-icon icon="mdi-translate" class="mr-2" />
+        {{ $t('settings.language.title') }}
+      </v-card-title>
+
+      <v-divider />
+
+      <v-list class="py-0">
+        <v-list-item
+          v-for="option in languageOptions"
+          :key="option.code"
+          class="settings-item"
+          lines="one"
+          @click="changeLanguage(option.code)"
+        >
+          <template #prepend>
+            <v-radio
+              :model-value="selectedLanguage"
+              :value="option.code"
+              hide-details
+              density="compact"
+              @click.stop
+            />
+          </template>
+          <v-list-item-title>{{ option.name }}</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-card>
 
     <!-- UI Mode -->
     <v-card variant="outlined" class="mb-4">
       <v-card-title class="text-subtitle-1">
-        Modo de Interface
+        {{ $t('settings.uiMode.title') }}
       </v-card-title>
       <v-card-subtitle class="pb-2">
-        Detectado: <strong>{{ detectedMode }}</strong> |
-        Atual: <strong>{{ uiMode }}</strong>
+        {{ $t('settings.uiMode.detected') }}: <strong>{{ detectedMode }}</strong> |
+        {{ $t('settings.uiMode.current') }}: <strong>{{ uiMode }}</strong>
       </v-card-subtitle>
 
       <v-divider />
@@ -219,14 +272,14 @@ onMounted(() => {
     <v-card variant="outlined" class="mb-4">
       <v-card-title class="text-subtitle-1">
         <v-icon icon="mdi-tune-vertical" class="mr-2" />
-        Calibração
+        {{ $t('settings.calibration.title') }}
       </v-card-title>
 
       <v-card-text>
         <!-- Correction Factor Slider -->
         <div class="mb-4">
           <div class="d-flex justify-space-between align-center mb-2">
-            <span class="text-body-2">Fator de Correção</span>
+            <span class="text-body-2">{{ $t('settings.calibration.correctionFactor') }}</span>
             <v-chip size="small" color="primary" variant="tonal">
               {{ correctionFactorPercent }}
             </v-chip>
@@ -250,7 +303,7 @@ onMounted(() => {
             </template>
           </v-slider>
           <p class="text-caption text-medium-emphasis mt-1">
-            Ajuste fino do tamanho dos optótipos (-10% a +10%)
+            {{ $t('settings.calibration.description') }}
           </p>
         </div>
 
@@ -262,7 +315,7 @@ onMounted(() => {
           density="compact"
           class="mb-3"
         >
-          Calibrado: {{ calibrationStore.distanceM }}m @ {{ calibrationStore.pxPerMm.toFixed(1) }} px/mm
+          {{ $t('settings.calibration.calibrated') }}: {{ calibrationStore.distanceM }}m @ {{ calibrationStore.pxPerMm.toFixed(1) }} px/mm
         </v-alert>
         <v-alert
           v-else
@@ -271,7 +324,7 @@ onMounted(() => {
           density="compact"
           class="mb-3"
         >
-          Não calibrado
+          {{ $t('settings.calibration.notCalibrated') }}
         </v-alert>
 
         <!-- Reset Calibration -->
@@ -287,7 +340,7 @@ onMounted(() => {
           @click="resetCalibration"
           @focus="focusedSection = 1; focusedIndex = 1"
         >
-          Resetar Calibração
+          {{ $t('settings.calibration.reset') }}
         </v-btn>
       </v-card-text>
     </v-card>
@@ -296,7 +349,7 @@ onMounted(() => {
     <v-card variant="outlined" class="mb-4">
       <v-card-title class="text-subtitle-1">
         <v-icon icon="mdi-palette-outline" class="mr-2" />
-        Aparência
+        {{ $t('settings.appearance.title') }}
       </v-card-title>
 
       <v-list class="py-0">
@@ -312,9 +365,9 @@ onMounted(() => {
           <template #prepend>
             <v-icon icon="mdi-contrast-circle" class="mr-3" />
           </template>
-          <v-list-item-title>Alto Contraste</v-list-item-title>
+          <v-list-item-title>{{ $t('settings.appearance.highContrast') }}</v-list-item-title>
           <v-list-item-subtitle>
-            Tema preto e branco puro para melhor visibilidade
+            {{ $t('settings.appearance.highContrastDescription') }}
           </v-list-item-subtitle>
           <template #append>
             <v-switch
@@ -333,7 +386,7 @@ onMounted(() => {
     <v-card variant="outlined" class="mb-4">
       <v-card-title class="text-subtitle-1">
         <v-icon icon="mdi-shield-lock-outline" class="mr-2" />
-        Modo Profissional
+        {{ $t('settings.proMode.title') }}
       </v-card-title>
 
       <v-list class="py-0">
@@ -347,9 +400,9 @@ onMounted(() => {
           @focus="focusedSection = 3; focusedIndex = 0"
           @keydown.enter.prevent="proModeEnabled = !proModeEnabled"
         >
-          <v-list-item-title>Ativar Modo Profissional</v-list-item-title>
+          <v-list-item-title>{{ $t('settings.proMode.enable') }}</v-list-item-title>
           <v-list-item-subtitle>
-            Bloqueio por PIN, contador de testes
+            {{ $t('settings.proMode.enableDescription') }}
           </v-list-item-subtitle>
           <template #append>
             <v-switch
@@ -378,8 +431,8 @@ onMounted(() => {
             <template #prepend>
               <v-icon :icon="settingsLocked ? 'mdi-lock' : 'mdi-lock-open-outline'" class="mr-3" />
             </template>
-            <v-list-item-title>Bloquear Configurações</v-list-item-title>
-            <v-list-item-subtitle>Requer PIN para alterar</v-list-item-subtitle>
+            <v-list-item-title>{{ $t('settings.proMode.lockSettings') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ $t('settings.proMode.lockSettingsDescription') }}</v-list-item-subtitle>
             <template #append>
               <v-switch
                 v-model="settingsLocked"
@@ -404,8 +457,8 @@ onMounted(() => {
             <template #prepend>
               <v-icon :icon="calibrationLocked ? 'mdi-lock' : 'mdi-lock-open-outline'" class="mr-3" />
             </template>
-            <v-list-item-title>Bloquear Calibração</v-list-item-title>
-            <v-list-item-subtitle>Requer PIN para recalibrar</v-list-item-subtitle>
+            <v-list-item-title>{{ $t('settings.proMode.lockCalibration') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ $t('settings.proMode.lockCalibrationDescription') }}</v-list-item-subtitle>
             <template #append>
               <v-switch
                 v-model="calibrationLocked"
@@ -432,8 +485,8 @@ onMounted(() => {
             <template #prepend>
               <v-icon icon="mdi-form-textbox-password" class="mr-3" />
             </template>
-            <v-list-item-title>Alterar PIN</v-list-item-title>
-            <v-list-item-subtitle>PIN atual: ****</v-list-item-subtitle>
+            <v-list-item-title>{{ $t('settings.proMode.changePin') }}</v-list-item-title>
+            <v-list-item-subtitle>{{ $t('settings.proMode.currentPin') }}: ****</v-list-item-subtitle>
             <template #append>
               <v-icon icon="mdi-chevron-right" />
             </template>
@@ -452,11 +505,11 @@ onMounted(() => {
             <template #prepend>
               <v-icon icon="mdi-counter" class="mr-3" />
             </template>
-            <v-list-item-title>Contador de Testes</v-list-item-title>
+            <v-list-item-title>{{ $t('settings.proMode.testCounter') }}</v-list-item-title>
             <v-list-item-subtitle>
-              {{ proModeStore.testCount }} teste{{ proModeStore.testCount !== 1 ? 's' : '' }} realizado{{ proModeStore.testCount !== 1 ? 's' : '' }}
+              {{ $t('settings.proMode.testsCompleted', { count: proModeStore.testCount }) }}
               <template v-if="proModeStore.lastTestDate">
-                • Último: {{ proModeStore.lastTestDate }}
+                • {{ $t('settings.proMode.lastTest') }}: {{ proModeStore.lastTestDate }}
               </template>
             </v-list-item-subtitle>
             <template #append>

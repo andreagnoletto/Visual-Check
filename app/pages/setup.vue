@@ -4,6 +4,8 @@ import { useCalibrationStore } from '~/stores/calibration'
 import { useZoomWarning } from '~/composables/useZoomWarning'
 import { useResetShortcut } from '~/composables/useResetShortcut'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Calibração',
 })
@@ -30,10 +32,10 @@ const pxPerMm = computed(() => {
 // Warnings
 const distanceWarning = computed(() => {
   if (distanceM.value < CONFIG.MIN_DISTANCE_M) {
-    return `Mínimo recomendado: ${CONFIG.MIN_DISTANCE_M}m`
+    return t('setup.distance.minWarning', { min: CONFIG.MIN_DISTANCE_M })
   }
   if (distanceM.value > CONFIG.MAX_DISTANCE_M) {
-    return `Máximo recomendado: ${CONFIG.MAX_DISTANCE_M}m`
+    return t('setup.distance.maxWarning', { max: CONFIG.MAX_DISTANCE_M })
   }
   return null
 })
@@ -41,10 +43,10 @@ const distanceWarning = computed(() => {
 const pxPerMmWarning = computed(() => {
   const val = pxPerMm.value
   if (val < CONFIG.MIN_PX_PER_MM) {
-    return `Densidade muito baixa (${val.toFixed(1)} px/mm)`
+    return t('setup.density.lowWarning', { value: val.toFixed(1) })
   }
   if (val > CONFIG.MAX_PX_PER_MM) {
-    return `Densidade muito alta (${val.toFixed(1)} px/mm)`
+    return t('setup.density.highWarning', { value: val.toFixed(1) })
   }
   return null
 })
@@ -131,21 +133,21 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         to="/"
         class="mb-4"
       >
-        Voltar
+        {{ $t('nav.back') }}
       </v-btn>
       <h1 class="text-h4 font-weight-bold">
         <v-icon icon="mdi-tune" class="mr-2" />
-        Calibração
+        {{ $t('setup.title') }}
       </h1>
       <p class="text-body-1 text-medium-emphasis mt-2">
-        Configure a distância e resolução da tela
+        {{ $t('setup.subtitle') }}
       </p>
     </header>
 
     <!-- Avisos -->
     <div v-if="hasZoomWarning" class="mb-4">
       <v-alert type="warning" variant="tonal" density="compact">
-        Zoom do navegador pode invalidar a calibração. Use 100%.
+        {{ $t('setup.zoomWarning') }}
       </v-alert>
     </div>
 
@@ -158,7 +160,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         @click="focusedSection = 'distance'"
       >
         <v-card-title class="text-subtitle-1">
-          1. Distância do observador
+          {{ $t('setup.distance.title') }}
         </v-card-title>
         <v-card-text>
           <div class="d-flex align-center ga-4">
@@ -170,7 +172,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
             <div class="text-center flex-grow-1">
               <div class="text-h3 font-weight-bold">{{ distanceM.toFixed(1) }}m</div>
               <div class="text-caption text-medium-emphasis">
-                Distância até a tela
+                {{ $t('setup.distance.label') }}
               </div>
             </div>
             <v-btn
@@ -207,7 +209,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         @click="focusedSection = 'method'"
       >
         <v-card-title class="text-subtitle-1">
-          2. Método de calibração
+          {{ $t('setup.method.title') }}
         </v-card-title>
         <v-card-text>
           <v-btn-toggle
@@ -219,11 +221,11 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
           >
             <v-btn value="preset" class="flex-grow-1">
               <v-icon start icon="mdi-television" />
-              Preset de Tela
+              {{ $t('setup.method.preset') }}
             </v-btn>
             <v-btn value="card" class="flex-grow-1">
               <v-icon start icon="mdi-credit-card-outline" />
-              Cartão de Crédito
+              {{ $t('setup.method.card') }}
             </v-btn>
           </v-btn-toggle>
         </v-card-text>
@@ -237,7 +239,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         @click="focusedSection = 'preset'"
       >
         <v-card-title class="text-subtitle-1">
-          3. Tamanho da tela
+          {{ $t('setup.preset.title') }}
         </v-card-title>
         <v-card-text>
           <v-chip-group
@@ -256,7 +258,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
             </v-chip>
           </v-chip-group>
           <div v-if="selectedPreset !== null" class="mt-3 text-body-2">
-            <strong>Densidade:</strong> {{ SCREEN_PRESETS[selectedPreset]?.pxPerMm }} px/mm
+            <strong>{{ $t('setup.density.label') }}:</strong> {{ SCREEN_PRESETS[selectedPreset]?.pxPerMm }} px/mm
           </div>
         </v-card-text>
       </v-card>
@@ -269,12 +271,11 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         @click="focusedSection = 'card'"
       >
         <v-card-title class="text-subtitle-1">
-          3. Ajuste com cartão de crédito
+          {{ $t('setup.card.title') }}
         </v-card-title>
         <v-card-text>
           <p class="text-body-2 mb-4">
-            Coloque um cartão de crédito na tela e ajuste até que a barra
-            azul tenha exatamente a mesma largura (85.6mm).
+            {{ $t('setup.card.description') }}
           </p>
           <div
             class="card-reference bg-primary rounded mx-auto mb-4"
@@ -289,7 +290,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
             color="primary"
           />
           <div class="text-center mt-2 text-body-2">
-            <strong>Densidade calculada:</strong> {{ pxPerMm.toFixed(2) }} px/mm
+            <strong>{{ $t('setup.density.calculated') }}:</strong> {{ pxPerMm.toFixed(2) }} px/mm
           </div>
           <v-alert
             v-if="pxPerMmWarning"
@@ -314,7 +315,7 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         @focus="focusedSection = 'confirm'"
       >
         <v-icon start icon="mdi-check" />
-        Confirmar Calibração
+        {{ $t('setup.confirm') }}
       </v-btn>
     </div>
 
@@ -326,14 +327,14 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
     <!-- Reset Modal -->
     <v-dialog v-model="showResetModal" max-width="400">
       <v-card>
-        <v-card-title>Resetar Calibração?</v-card-title>
+        <v-card-title>{{ $t('setup.reset.title') }}</v-card-title>
         <v-card-text>
-          Isso irá apagar todas as configurações de calibração.
+          {{ $t('setup.reset.message') }}
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-          <v-btn variant="text" @click="cancelReset">Cancelar</v-btn>
-          <v-btn color="error" variant="flat" @click="confirmReset">Resetar</v-btn>
+          <v-btn variant="text" @click="cancelReset">{{ $t('common.cancel') }}</v-btn>
+          <v-btn color="error" variant="flat" @click="confirmReset">{{ $t('common.reset') }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>

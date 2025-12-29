@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { CONFIG } from '~/utils/constants'
 
+const { t } = useI18n()
+
 interface Props {
   modelValue: boolean
   mode?: 'validate' | 'set'
@@ -9,7 +11,7 @@ interface Props {
 
 const props = withDefaults(defineProps<Props>(), {
   mode: 'validate',
-  title: 'Digite o PIN',
+  title: '',
 })
 
 const emit = defineEmits<{
@@ -29,9 +31,9 @@ const shake = ref(false)
 const isSetMode = computed(() => props.mode === 'set')
 const displayTitle = computed(() => {
   if (isSetMode.value) {
-    return step.value === 'enter' ? 'Novo PIN' : 'Confirmar PIN'
+    return step.value === 'enter' ? t('pin.newPin') : t('pin.confirmPin')
   }
-  return props.title
+  return props.title || t('pin.enterPin')
 })
 
 const maskedPin = computed(() => '●'.repeat(pin.value.length) + '○'.repeat(4 - pin.value.length))
@@ -109,7 +111,7 @@ function handleSubmit() {
         emit('success', pin.value)
         close()
       } else {
-        error.value = 'PINs não conferem'
+        error.value = t('pin.pinMismatch')
         confirmPin.value = ''
         triggerShake()
       }
@@ -117,7 +119,7 @@ function handleSubmit() {
   } else {
     // Modo validação
     if (proModeStore.isLocked()) {
-      error.value = `Bloqueado. Aguarde ${proModeStore.lockRemainingFormatted}`
+      error.value = t('pin.locked', { time: proModeStore.lockRemainingFormatted })
       triggerShake()
       return
     }
@@ -128,9 +130,9 @@ function handleSubmit() {
     } else {
       const remaining = CONFIG.MAX_PIN_ATTEMPTS - proModeStore.failedAttempts
       if (proModeStore.isLocked()) {
-        error.value = `Muitas tentativas. Bloqueado por 5 minutos.`
+        error.value = t('pin.tooManyAttempts')
       } else {
-        error.value = `PIN incorreto. ${remaining} tentativa${remaining !== 1 ? 's' : ''} restante${remaining !== 1 ? 's' : ''}.`
+        error.value = t('pin.wrongPinRemaining', { remaining })
       }
       pin.value = ''
       triggerShake()
@@ -257,7 +259,7 @@ useRemoteNavigation({
           density="compact"
           class="mb-4"
         >
-          Bloqueado por {{ proModeStore.lockRemainingFormatted }}
+          {{ $t('pin.lockedFor', { time: proModeStore.lockRemainingFormatted }) }}
         </v-alert>
 
         <!-- Numpad -->
@@ -302,7 +304,7 @@ useRemoteNavigation({
           variant="text"
           @click="handleCancel"
         >
-          Cancelar
+          {{ $t('common.cancel') }}
         </v-btn>
       </v-card-actions>
     </v-card>

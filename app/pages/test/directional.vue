@@ -8,6 +8,8 @@ import { useProModeStore } from '~/stores/proMode'
 import { normalizeInput } from '~/utils/normalizeInput'
 import type { Direction } from '~/utils/optotypeCalculations'
 
+const { t } = useI18n()
+
 definePageMeta({
   title: 'Teste Direcional',
 })
@@ -117,7 +119,7 @@ watch(phase, (newPhase) => {
     <!-- Loading fonte -->
     <div v-if="fontLoading" class="d-flex flex-column align-center justify-center fill-height">
       <v-progress-circular indeterminate size="64" color="primary" />
-      <p class="mt-4 text-medium-emphasis">Carregando fonte...</p>
+      <p class="mt-4 text-medium-emphasis">{{ $t('common.loadingFont') }}</p>
     </div>
 
     <!-- Tela inicial -->
@@ -129,30 +131,30 @@ watch(phase, (newPhase) => {
           to="/tests"
           class="mb-4"
         >
-          Voltar
+          {{ $t('nav.back') }}
         </v-btn>
-        <h1 class="text-h4 font-weight-bold">Teste Direcional (Tumbling E)</h1>
+        <h1 class="text-h4 font-weight-bold">{{ $t('tests.directional.title') }}</h1>
       </header>
 
       <v-card class="flex-grow-1 d-flex flex-column align-center justify-center pa-8">
         <div class="tumbling-e-demo mb-6">
-          <span class="optotype demo-e">E</span>
+          <TumblingE :size="80" direction="right" />
         </div>
         
-        <h2 class="text-h5 mb-4 text-center">Instruções</h2>
+        <h2 class="text-h5 mb-4 text-center">{{ $t('tests.instructions.title') }}</h2>
         
         <v-list class="bg-transparent mb-6" max-width="500">
           <v-list-item prepend-icon="mdi-numeric-1-circle">
-            <v-list-item-title>A letra "E" será exibida em diferentes direções</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.directional.step1') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-2-circle">
-            <v-list-item-title>Indique para onde as "pernas" do E apontam</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.directional.step2') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-3-circle">
-            <v-list-item-title>Use as setas do teclado/controle ou toque nos botões</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.directional.step3') }}</v-list-item-title>
           </v-list-item>
           <v-list-item prepend-icon="mdi-numeric-4-circle">
-            <v-list-item-title>Mantenha a distância calibrada ({{ calibration.distanceM }}m)</v-list-item-title>
+            <v-list-item-title>{{ $t('tests.instructions.directional.step4', { distance: calibration.distanceM }) }}</v-list-item-title>
           </v-list-item>
         </v-list>
 
@@ -162,7 +164,7 @@ watch(phase, (newPhase) => {
           prepend-icon="mdi-play"
           @click="startTest"
         >
-          Iniciar Teste
+          {{ $t('tests.startTest') }}
         </v-btn>
       </v-card>
 
@@ -176,13 +178,13 @@ watch(phase, (newPhase) => {
       <!-- Progress bar -->
       <div class="test-header d-flex align-center justify-space-between mb-4">
         <v-chip variant="outlined" size="small">
-          Linha {{ progress.line }}/{{ progress.totalLines }}
+          {{ $t('tests.line') }} {{ progress.line }}/{{ progress.totalLines }}
         </v-chip>
         <v-chip variant="outlined" size="small">
           {{ currentLine.snellen }}
         </v-chip>
         <v-chip variant="outlined" size="small">
-          {{ progress.attempt }}/{{ progress.attemptsInLine }}
+          {{ $t('tests.attempt') }} {{ progress.attempt }}/{{ progress.attemptsInLine }}
         </v-chip>
       </div>
 
@@ -194,16 +196,11 @@ watch(phase, (newPhase) => {
 
       <!-- Área do optótipo -->
       <div class="optotype-area flex-grow-1 d-flex align-center justify-center">
-        <span
-          class="optotype"
+        <TumblingE
           data-testid="optotype"
-          :class="`rotate-${currentRotation}`"
-          :style="{
-            fontSize: `${optotypeSize.fontSizePx}px`,
-          }"
-        >
-          E
-        </span>
+          :size="optotypeSize.fontSizePx"
+          :direction="currentDirection"
+        />
       </div>
 
       <!-- Botões de direção em cruz -->
@@ -295,31 +292,6 @@ watch(phase, (newPhase) => {
 .tumbling-e-demo {
   display: flex;
   gap: 1rem;
-}
-
-.demo-e {
-  font-size: 48px;
-}
-
-/* Rotações do E (Tumbling E) */
-.rotate-0 {
-  display: inline-block;
-  transform: rotate(0deg);
-}
-
-.rotate-90 {
-  display: inline-block;
-  transform: rotate(90deg);
-}
-
-.rotate-180 {
-  display: inline-block;
-  transform: rotate(180deg);
-}
-
-.rotate-270 {
-  display: inline-block;
-  transform: rotate(270deg);
 }
 
 .optotype-area {

@@ -10,7 +10,7 @@ export function useHighContrast() {
     if (proModeStore.highContrastEnabled) {
       theme.global.name.value = 'highContrast'
     } else {
-      theme.global.name.value = 'dark'
+      theme.global.name.value = 'light'
     }
   }
 
