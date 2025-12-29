@@ -23,8 +23,13 @@ function changeLanguage(code: string) {
   if (code === 'auto') {
     const browserLang = navigator.language
     const supported = locales.value.map(l => l.code)
-    const match = supported.find(s => browserLang.startsWith(s.split('-')[0]))
-    locale.value = match || 'en'
+    // Try exact match first (e.g., pt-BR), then partial match (e.g., pt)
+    const exactMatch = supported.find(s => s.toLowerCase() === browserLang.toLowerCase())
+    const partialMatch = supported.find(s => 
+      browserLang.toLowerCase().startsWith(s.split('-')[0].toLowerCase()) ||
+      s.toLowerCase().startsWith(browserLang.split('-')[0].toLowerCase())
+    )
+    locale.value = exactMatch || partialMatch || 'en'
   } else {
     locale.value = code
   }
