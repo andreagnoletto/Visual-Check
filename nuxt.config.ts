@@ -41,14 +41,14 @@ export default defineNuxtConfig({
     manifest: {
       name: 'Visual Check',
       short_name: 'Visual Check',
-      description: 'Triagem básica de acuidade visual para TVs e dispositivos',
+      description: 'Basic visual acuity screening for TVs and devices',
       theme_color: '#1976D2',
       background_color: '#121212',
       display: 'standalone',
       orientation: 'any',
       scope: '/',
       start_url: '/',
-      lang: 'pt-BR',
+      lang: 'en',
       categories: ['health', 'medical', 'utilities'],
       icons: [
         {
