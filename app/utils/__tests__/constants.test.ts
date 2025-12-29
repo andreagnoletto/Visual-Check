@@ -40,12 +40,13 @@ describe('SCREEN_PRESETS', () => {
     expect(SCREEN_PRESETS.length).toBeGreaterThanOrEqual(5)
   })
 
-  it('cada preset deve ter label, pxPerMm e aspectRatio', () => {
+  it('cada preset deve ter label, pxPerMm, aspectRatio e category', () => {
     SCREEN_PRESETS.forEach((preset) => {
       expect(preset.label).toBeDefined()
       expect(typeof preset.label).toBe('string')
       expect(preset.pxPerMm).toBeGreaterThan(0)
       expect(preset.aspectRatio).toBeDefined()
+      expect(['tv', 'monitor', 'tablet', 'phone']).toContain(preset.category)
     })
   })
 
@@ -54,5 +55,13 @@ describe('SCREEN_PRESETS', () => {
       expect(preset.pxPerMm).toBeGreaterThanOrEqual(CONFIG.MIN_PX_PER_MM)
       expect(preset.pxPerMm).toBeLessThanOrEqual(CONFIG.MAX_PX_PER_MM)
     })
+  })
+
+  it('deve ter presets para cada categoria de dispositivo', () => {
+    const categories = SCREEN_PRESETS.map(p => p.category)
+    expect(categories).toContain('tv')
+    expect(categories).toContain('monitor')
+    expect(categories).toContain('tablet')
+    expect(categories).toContain('phone')
   })
 })

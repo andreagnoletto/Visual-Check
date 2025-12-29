@@ -3,6 +3,7 @@ import { SCREEN_PRESETS, CONFIG } from '~/utils/constants'
 import { useCalibrationStore } from '~/stores/calibration'
 import { useZoomWarning } from '~/composables/useZoomWarning'
 import { useResetShortcut } from '~/composables/useResetShortcut'
+import { detectDevice, isMobileDevice } from '~/utils/deviceDetection'
 
 const { t } = useI18n()
 
@@ -19,6 +20,28 @@ const distanceM = ref(calibrationStore.distanceM)
 const selectedPreset = ref<number | null>(null)
 const calibrationMethod = ref<'preset' | 'card'>('preset')
 const cardWidthPx = ref(256) // Slider para calibração por cartão
+
+// Auto-detecção de dispositivo
+const detectedDevice = ref<ReturnType<typeof detectDevice> | null>(null)
+const autoDetectAttempted = ref(false)
+
+onMounted(() => {
+  // Tentar auto-detectar o dispositivo
+  const result = detectDevice()
+  detectedDevice.value = result
+  autoDetectAttempted.value = true
+  
+  // Se detectou com confiança média ou alta, pré-selecionar o preset
+  if (result.presetIndex !== null && (result.confidence === 'high' || result.confidence === 'medium')) {
+    selectedPreset.value = result.presetIndex
+    
+    // Se for dispositivo móvel, ajustar distância recomendada para teste de perto
+    if (result.category === 'phone' || result.category === 'tablet') {
+      // Distância menor para dispositivos móveis (eles não fazem teste de distância normalmente)
+      distanceM.value = 2 // 2 metros é razoável para tablets segurados por alguém
+    }
+  }
+})
 
 // Computed para pxPerMm baseado no método
 const pxPerMm = computed(() => {
@@ -238,10 +261,34 @@ const { showResetModal, confirmReset, cancelReset } = useResetShortcut(() => {
         :class="{ 'border-primary': focusedSection === 'preset' }"
         @click="focusedSection = 'preset'"
       >
-        <v-card-title class="text-subtitle-1">
+        <v-card-title class="text-subtitle-1 d-flex align-center">
           {{ $t('setup.preset.title') }}
+          <v-chip
+            v-if="detectedDevice?.confidence === 'high' || detectedDevice?.confidence === 'medium'"
+            size="x-small"
+            color="success"
+            variant="tonal"
+            class="ml-2"
+          >
+            <v-icon start icon="mdi-check" size="x-small" />
+            {{ $t('setup.preset.autoDetected') }}
+          </v-chip>
         </v-card-title>
         <v-card-text>
+          <!-- Alerta de auto-detecção -->
+          <v-alert
+            v-if="detectedDevice?.detectedDevice && selectedPreset === detectedDevice.presetIndex"
+            type="info"
+            variant="tonal"
+            density="compact"
+            class="mb-3"
+          >
+            <template #prepend>
+              <v-icon icon="mdi-cellphone-check" />
+            </template>
+            {{ $t('setup.preset.detected', { device: detectedDevice.detectedDevice }) }}
+          </v-alert>
+
           <v-chip-group
             v-model="selectedPreset"
             mandatory

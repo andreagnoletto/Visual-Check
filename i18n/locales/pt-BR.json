@@ -56,6 +56,16 @@
       "proTitle": "Landolt (Pro)",
       "proSubtitle": "Múltiplos anéis, controle manual"
     },
+    "jaeger": {
+      "name": "Jaeger",
+      "title": "Jaeger (Assistido)",
+      "subtitle": "Teste de leitura para visão de perto",
+      "proTitle": "Jaeger (Pro)",
+      "proSubtitle": "Múltiplos tamanhos, controle manual",
+      "canRead": "Consigo Ler",
+      "cannotRead": "Não Consigo",
+      "holdAt": "Segure o dispositivo a {distance}cm dos olhos"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instruções",
@@ -82,6 +92,12 @@
         "step2": "Indique para onde a abertura do anel aponta",
         "step3": "Use as setas ou toque nos botões de direção",
         "step4": "Mantenha a distância calibrada ({distance}m)"
+      },
+      "jaeger": {
+        "step1": "Textos serão exibidos em diferentes tamanhos",
+        "step2": "Tente ler o texto na tela",
+        "step3": "Indique se consegue ou não ler o texto",
+        "step4": "Segure o dispositivo a {distance}cm dos olhos"
       }
     },
     "startTest": "Iniciar Teste",
@@ -115,7 +131,9 @@
       "card": "Cartão de Crédito"
     },
     "preset": {
-      "title": "3. Tamanho da tela"
+      "title": "3. Tamanho da tela",
+      "autoDetected": "Auto-detectado",
+      "detected": "Dispositivo detectado: {device}"
     },
     "card": {
       "title": "3. Ajuste com cartão de crédito",

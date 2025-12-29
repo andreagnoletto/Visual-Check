@@ -30,6 +30,12 @@ const testItems = computed(() => [
     icon: 'mdi-circle-outline',
     to: '/test/landolt-pro',
   },
+  {
+    title: t('tests.jaeger.name'),
+    subtitle: t('tests.jaeger.proSubtitle'),
+    icon: 'mdi-book-open-page-variant',
+    to: '/test/jaeger-pro',
+  },
 ])
 
 const focusedIndex = ref(0)

@@ -56,6 +56,16 @@
       "proTitle": "Landolt (Pro)",
       "proSubtitle": "Multiple rings, manual control"
     },
+    "jaeger": {
+      "name": "Jaeger",
+      "title": "Jaeger (Assisted)",
+      "subtitle": "Reading test for near vision",
+      "proTitle": "Jaeger (Pro)",
+      "proSubtitle": "Multiple sizes, manual control",
+      "canRead": "I Can Read",
+      "cannotRead": "I Cannot",
+      "holdAt": "Hold the device at {distance}cm from your eyes"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instructions",
@@ -82,6 +92,12 @@
         "step2": "Indicate which direction the ring gap points to",
         "step3": "Use arrow keys or tap the direction buttons",
         "step4": "Maintain the calibrated distance ({distance}m)"
+      },
+      "jaeger": {
+        "step1": "Text will be displayed at different sizes",
+        "step2": "Try to read the text on screen",
+        "step3": "Indicate whether you can or cannot read the text",
+        "step4": "Hold the device at {distance}cm from your eyes"
       }
     },
     "startTest": "Start Test",
@@ -115,7 +131,9 @@
       "card": "Credit Card"
     },
     "preset": {
-      "title": "3. Screen size"
+      "title": "3. Screen size",
+      "autoDetected": "Auto-detected",
+      "detected": "Detected device: {device}"
     },
     "card": {
       "title": "3. Adjust with credit card",

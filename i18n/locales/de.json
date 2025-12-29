@@ -56,6 +56,16 @@
       "proTitle": "Landolt (Pro)",
       "proSubtitle": "Mehrere Ringe, manuelle Steuerung"
     },
+    "jaeger": {
+      "name": "Jaeger",
+      "title": "Jaeger (Assistiert)",
+      "subtitle": "Lesetest für Nahsicht",
+      "proTitle": "Jaeger (Pro)",
+      "proSubtitle": "Mehrere Größen, manuelle Steuerung",
+      "canRead": "Ich Kann Lesen",
+      "cannotRead": "Ich Kann Nicht",
+      "holdAt": "Halten Sie das Gerät {distance}cm von Ihren Augen entfernt"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Anleitung",
@@ -82,6 +92,12 @@
         "step2": "Geben Sie an, wohin die Öffnung des Rings zeigt",
         "step3": "Verwenden Sie Pfeile oder die Richtungstasten",
         "step4": "Halten Sie den kalibrierten Abstand ein ({distance}m)"
+      },
+      "jaeger": {
+        "step1": "Texte werden in verschiedenen Größen angezeigt",
+        "step2": "Versuchen Sie, den Text auf dem Bildschirm zu lesen",
+        "step3": "Geben Sie an, ob Sie den Text lesen können oder nicht",
+        "step4": "Halten Sie das Gerät {distance}cm von Ihren Augen entfernt"
       }
     },
     "startTest": "Test starten",
@@ -115,7 +131,9 @@
       "card": "Kreditkarte"
     },
     "preset": {
-      "title": "3. Bildschirmgröße"
+      "title": "3. Bildschirmgröße",
+      "autoDetected": "Automatisch erkannt",
+      "detected": "Erkanntes Gerät: {device}"
     },
     "card": {
       "title": "3. Mit Kreditkarte anpassen",

@@ -30,13 +30,19 @@ const testItems = computed(() => [
     icon: 'mdi-circle-outline',
     to: '/test/landolt',
   },
+  {
+    title: t('tests.jaeger.title'),
+    subtitle: t('tests.jaeger.subtitle'),
+    icon: 'mdi-book-open-page-variant',
+    to: '/test/jaeger',
+  },
 ])
 
 const focusedIndex = ref(0)
 
 function moveFocus(delta: number) {
   const newIndex = focusedIndex.value + delta
-  if (newIndex >= 0 && newIndex < testItems.length) {
+  if (newIndex >= 0 && newIndex < testItems.value.length) {
     focusedIndex.value = newIndex
     nextTick(() => {
       const items = document.querySelectorAll('.test-item')

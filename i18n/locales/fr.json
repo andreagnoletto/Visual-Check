@@ -56,6 +56,16 @@
       "proTitle": "Landolt (Pro)",
       "proSubtitle": "Plusieurs anneaux, contrôle manuel"
     },
+    "jaeger": {
+      "name": "Jaeger",
+      "title": "Jaeger (Assisté)",
+      "subtitle": "Test de lecture pour la vision de près",
+      "proTitle": "Jaeger (Pro)",
+      "proSubtitle": "Plusieurs tailles, contrôle manuel",
+      "canRead": "Je Peux Lire",
+      "cannotRead": "Je Ne Peux Pas",
+      "holdAt": "Tenez l'appareil à {distance}cm de vos yeux"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instructions",
@@ -82,6 +92,12 @@
         "step2": "Indiquez vers où pointe l'ouverture de l'anneau",
         "step3": "Utilisez les flèches ou les boutons de direction",
         "step4": "Maintenez la distance calibrée ({distance}m)"
+      },
+      "jaeger": {
+        "step1": "Des textes seront affichés à différentes tailles",
+        "step2": "Essayez de lire le texte à l'écran",
+        "step3": "Indiquez si vous pouvez ou non lire le texte",
+        "step4": "Tenez l'appareil à {distance}cm de vos yeux"
       }
     },
     "startTest": "Démarrer le test",
@@ -115,7 +131,9 @@
       "card": "Carte de crédit"
     },
     "preset": {
-      "title": "3. Taille de l'écran"
+      "title": "3. Taille de l'écran",
+      "autoDetected": "Auto-détecté",
+      "detected": "Appareil détecté : {device}"
     },
     "card": {
       "title": "3. Ajuster avec carte de crédit",
