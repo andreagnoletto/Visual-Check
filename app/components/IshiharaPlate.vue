@@ -3,6 +3,7 @@
  * Componente IshiharaPlate - Renderiza placas do teste de Ishihara
  * 
  * Usa imagens reais das placas originais de Shinobu Ishihara (1917).
+ * Imagens quadradas 512x512 exibidas em formato circular.
  */
 import { computed } from 'vue'
 
@@ -12,7 +13,7 @@ const props = defineProps<{
 }>()
 
 // Tamanho padrão da placa
-const plateSize = computed(() => props.size || 320)
+const plateSize = computed(() => props.size || 400)
 
 // Caminho para a imagem da placa
 const imagePath = computed(() => `/ishihara/plate_${String(props.plateId).padStart(2, '0')}.png`)
