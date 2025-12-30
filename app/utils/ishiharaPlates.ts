@@ -1,15 +1,12 @@
-// app/utils/ishiharaPlates.ts
 /**
  * Teste de Ishihara - Teste de Visão de Cores
  * 
  * O teste de Ishihara é usado para detectar deficiências na visão de cores,
  * especialmente daltonismo vermelho-verde (protanopia e deuteranopia).
  * 
- * Este teste foi criado por Dr. Shinobu Ishihara em 1917 e está em domínio público.
+ * Este teste foi criado por Dr. Shinobu Ishihara em 1917.
  * As placas consistem em círculos coloridos (dots) que formam números visíveis
- * para pessoas com visão normal, mas invisíveis para pessoas com daltonismo.
- * 
- * Referência: https://en.wikipedia.org/wiki/Ishihara_test
+ * para pessoas com visão normal, mas invisíveis ou diferentes para pessoas com daltonismo.
  */
 
 /**
@@ -34,26 +31,6 @@ export type IshiharaPlateType =
   | 'diagnostic'       // Para distinguir tipo de daltonismo
 
 /**
- * Cores autênticas das placas de Ishihara
- * Baseadas nas placas originais de 1917
- */
-export const ISHIHARA_COLORS = {
-  // Cores de fundo (visíveis para todos)
-  background: {
-    tan: ['#D4A76A', '#C99B5E', '#BE8F52', '#B38346', '#D9B076', '#CEAA6F'],
-    olive: ['#8B8B4B', '#7A7A42', '#6B6B38', '#9C9C55', '#8A8A48', '#7B7B40'],
-    gray: ['#A0A090', '#909080', '#808070', '#B0B0A0', '#959585', '#858575'],
-  },
-  // Cores do número (confundíveis para daltônicos)
-  number: {
-    green: ['#5D9E47', '#4D8E37', '#3D7E27', '#6DAE57', '#559946', '#458935'],
-    red: ['#C75050', '#B74343', '#A73636', '#D75D5D', '#C84848', '#B83B3B'],
-    orange: ['#E07838', '#D0682C', '#C05820', '#EA8848', '#DB7233', '#CB6226'],
-    purple: ['#8B6090', '#7B5080', '#6B4070', '#9B70A0', '#855A8A', '#754A7A'],
-  },
-}
-
-/**
  * Definição de uma placa Ishihara
  */
 export interface IshiharaPlate {
@@ -64,352 +41,510 @@ export interface IshiharaPlate {
   protanAnswer?: string       // Específico para protanopia
   deutanAnswer?: string       // Específico para deuteranopia
   description: string
-  backgroundColors: string[]  // Cores do fundo
-  numberColors: string[]      // Cores do número
 }
 
 /**
- * Placas de Ishihara baseadas no teste original de 38 placas
- * Usando um subconjunto representativo de 14 placas para triagem
+ * Resposta do usuário a uma placa
+ */
+export interface IshiharaAnswer {
+  plateId: number
+  answer: string
+  timestamp: number
+}
+
+/**
+ * Resultado da análise do teste
+ */
+export interface IshiharaResult {
+  diagnosis: ColorVisionDeficiency
+  confidence: number
+  description: string
+  correctCount: number
+  totalCount: number
+}
+
+
+/**
+ * Placas de Ishihara - Teste original de 38 placas
  * 
- * Fontes:
- * - https://en.wikipedia.org/wiki/Ishihara_test
- * - https://www.color-blindness.com/ishihara-38-plates-cvd-test/
+ * Respostas baseadas nas placas originais de Shinobu Ishihara (1917)
+ * Fonte: https://en.wikipedia.org/wiki/Ishihara_test
  * 
  * NOTA: Este é um teste de triagem, não substitui avaliação profissional
  */
 export const ISHIHARA_PLATES: IshiharaPlate[] = [
-  // Placa 1: Demonstração - TODOS devem ver (valida se o teste está funcionando)
+  // Placa 1: Demonstração - TODOS devem ver
   {
     id: 1,
     type: 'demonstration',
     normalAnswer: '12',
     colorBlindAnswer: '12',
     description: 'Placa de demonstração - todos devem ver o número 12',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
   },
   
-  // Placas 2-9: Vanishing (desaparecem para daltônicos)
+  // Placa 2
   {
     id: 2,
     type: 'vanishing',
     normalAnswer: '8',
     colorBlindAnswer: '',
     description: 'Número 8 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.red,
   },
+  
+  // Placa 3
   {
     id: 3,
     type: 'vanishing',
     normalAnswer: '6',
     colorBlindAnswer: '',
     description: 'Número 6 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
   },
+  
+  // Placa 4
   {
     id: 4,
     type: 'vanishing',
     normalAnswer: '29',
     colorBlindAnswer: '',
     description: 'Número 29 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.red,
   },
+  
+  // Placa 5
   {
     id: 5,
     type: 'vanishing',
     normalAnswer: '57',
     colorBlindAnswer: '',
     description: 'Número 57 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
   },
+  
+  // Placa 6
   {
     id: 6,
     type: 'vanishing',
     normalAnswer: '5',
     colorBlindAnswer: '',
     description: 'Número 5 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.orange,
   },
+  
+  // Placa 7
   {
     id: 7,
     type: 'vanishing',
     normalAnswer: '3',
     colorBlindAnswer: '',
     description: 'Número 3 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.red,
   },
+  
+  // Placa 8
   {
     id: 8,
     type: 'vanishing',
     normalAnswer: '15',
     colorBlindAnswer: '',
     description: 'Número 15 - invisível para daltonismo vermelho-verde',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
   },
+  
+  // Placa 9
   {
     id: 9,
     type: 'vanishing',
     normalAnswer: '74',
-    colorBlindAnswer: '21',
-    description: 'Número 74 - daltônicos podem ver 21',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.red,
+    colorBlindAnswer: '',
+    description: 'Número 74 - invisível para daltonismo vermelho-verde',
   },
   
-  // Placas 10-11: Transformation (número diferente para daltônicos)
+  // Placa 10
   {
     id: 10,
     type: 'transformation',
-    normalAnswer: '45',
+    normalAnswer: '2',
     colorBlindAnswer: '',
-    description: 'Normal vê 45, daltônicos não veem nada',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
+    protanAnswer: '',
+    deutanAnswer: '6',
+    description: 'Número 2 normal; invisível protanopia, 6 para deuteranopia',
   },
+  
+  // Placa 11
   {
     id: 11,
     type: 'transformation',
-    normalAnswer: '97',
+    normalAnswer: '6',
     colorBlindAnswer: '',
-    description: 'Normal vê 97, daltônicos não veem nada',
-    backgroundColors: ISHIHARA_COLORS.background.olive,
-    numberColors: ISHIHARA_COLORS.number.orange,
+    protanAnswer: '5',
+    deutanAnswer: '',
+    description: 'Número 6 normal; 5 para protanopia, invisível deuteranopia',
   },
   
-  // Placas 12-14: Diagnostic (diferenciam protanopia de deuteranopia)
+  // Placa 12
   {
     id: 12,
-    type: 'diagnostic',
-    normalAnswer: '26',
+    type: 'vanishing',
+    normalAnswer: '97',
     colorBlindAnswer: '',
-    protanAnswer: '6',
-    deutanAnswer: '2',
-    description: 'Diferencia protanopia (6) de deuteranopia (2)',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.red,
+    description: 'Número 97 - invisível para daltonismo vermelho-verde',
   },
+  
+  // Placa 13
   {
     id: 13,
-    type: 'diagnostic',
-    normalAnswer: '42',
+    type: 'transformation',
+    normalAnswer: '45',
     colorBlindAnswer: '',
-    protanAnswer: '2',
-    deutanAnswer: '4',
-    description: 'Diferencia protanopia (2) de deuteranopia (4)',
-    backgroundColors: ISHIHARA_COLORS.background.tan,
-    numberColors: ISHIHARA_COLORS.number.green,
+    description: 'Número 45 normal; invisível para daltonismo',
   },
+  
+  // Placa 14
   {
     id: 14,
-    type: 'diagnostic',
+    type: 'transformation',
+    normalAnswer: '5',
+    colorBlindAnswer: '',
+    description: 'Número 5 normal; invisível para daltonismo',
+  },
+  
+  // Placa 15
+  {
+    id: 15,
+    type: 'vanishing',
+    normalAnswer: '7',
+    colorBlindAnswer: '',
+    description: 'Número 7 - invisível para daltonismo vermelho-verde',
+  },
+  
+  // Placa 16
+  {
+    id: 16,
+    type: 'vanishing',
     normalAnswer: '16',
     colorBlindAnswer: '',
-    protanAnswer: '1',
+    description: 'Número 16 - invisível para daltonismo vermelho-verde',
+  },
+  
+  // Placa 17
+  {
+    id: 17,
+    type: 'hidden',
+    normalAnswer: '',
+    colorBlindAnswer: '5',
+    description: 'Invisível para visão normal; 5 para daltonismo vermelho-verde',
+  },
+  
+  // Placa 18
+  {
+    id: 18,
+    type: 'transformation',
+    normalAnswer: '73',
+    colorBlindAnswer: '',
+    description: 'Número 73 normal; invisível para daltonismo',
+  },
+  
+  // Placa 19
+  {
+    id: 19,
+    type: 'diagnostic',
+    normalAnswer: '',
+    colorBlindAnswer: '',
+    protanAnswer: '2',
+    deutanAnswer: '',
+    description: 'Invisível normal e deuteranopia; 2 para protanopia',
+  },
+  
+  // Placa 20
+  {
+    id: 20,
+    type: 'diagnostic',
+    normalAnswer: '',
+    colorBlindAnswer: '',
+    protanAnswer: '',
+    deutanAnswer: '2',
+    description: 'Invisível normal e protanopia; 2 para deuteranopia',
+  },
+  
+  // Placa 21
+  {
+    id: 21,
+    type: 'transformation',
+    normalAnswer: '45',
+    colorBlindAnswer: '',
+    description: 'Número 45 normal; invisível para daltonismo',
+  },
+  
+  // Placa 22
+  {
+    id: 22,
+    type: 'diagnostic',
+    normalAnswer: '26',
+    colorBlindAnswer: '6',
+    protanAnswer: '2',
     deutanAnswer: '6',
-    description: 'Diferencia protanopia (1) de deuteranopia (6)',
-    backgroundColors: ISHIHARA_COLORS.background.olive,
-    numberColors: ISHIHARA_COLORS.number.purple,
+    description: 'Número 26 normal; 6 daltonismo; 2 protanopia, 6 deuteranopia',
+  },
+  
+  // Placa 23
+  {
+    id: 23,
+    type: 'diagnostic',
+    normalAnswer: '42',
+    colorBlindAnswer: '2',
+    protanAnswer: '4',
+    deutanAnswer: '2',
+    description: 'Número 42 normal; 2 daltonismo; 4 protanopia, 2 deuteranopia',
+  },
+  
+  // Placa 24
+  {
+    id: 24,
+    type: 'diagnostic',
+    normalAnswer: '35',
+    colorBlindAnswer: '5',
+    protanAnswer: '3',
+    deutanAnswer: '5',
+    description: 'Número 35 normal; 5 daltonismo; 3 protanopia, 5 deuteranopia',
+  },
+  
+  // Placa 25
+  {
+    id: 25,
+    type: 'diagnostic',
+    normalAnswer: '96',
+    colorBlindAnswer: '6',
+    protanAnswer: '9',
+    deutanAnswer: '6',
+    description: 'Número 96 normal; 6 daltonismo; 9 protanopia, 6 deuteranopia',
+  },
+  
+  // Placas 26-31: Tracejados (traçar linha entre pontos)
+  {
+    id: 26,
+    type: 'diagnostic',
+    normalAnswer: 'purple-line',
+    colorBlindAnswer: 'red-line',
+    description: 'Tracejado roxo (normal) ou vermelho (daltonismo)',
+  },
+  
+  {
+    id: 27,
+    type: 'diagnostic',
+    normalAnswer: 'purple-line',
+    colorBlindAnswer: 'red-line',
+    description: 'Tracejado roxo (normal) ou vermelho (daltonismo)',
+  },
+  
+  {
+    id: 28,
+    type: 'diagnostic',
+    normalAnswer: 'orange-line',
+    colorBlindAnswer: 'blue-line',
+    description: 'Tracejado laranja (normal) ou azul (daltonismo)',
+  },
+  
+  {
+    id: 29,
+    type: 'diagnostic',
+    normalAnswer: 'orange-line',
+    colorBlindAnswer: 'blue-line',
+    description: 'Tracejado laranja (normal) ou azul (daltonismo)',
+  },
+  
+  {
+    id: 30,
+    type: 'diagnostic',
+    normalAnswer: 'orange-line',
+    colorBlindAnswer: 'blue-line',
+    description: 'Tracejado laranja (normal) ou azul (daltonismo)',
+  },
+  
+  {
+    id: 31,
+    type: 'diagnostic',
+    normalAnswer: 'orange-line',
+    colorBlindAnswer: 'blue-line',
+    description: 'Tracejado laranja (normal) ou azul (daltonismo)',
   },
 ]
 
 /**
- * Resultado de uma resposta no teste
+ * Opções de resposta para uma placa (para exibir no UI)
  */
-export interface IshiharaAnswer {
-  plateId: number
-  userAnswer: string
-  isCorrect: boolean
-  plate: IshiharaPlate
-}
-
-/**
- * Resultado final do teste Ishihara
- */
-export interface IshiharaResult {
-  totalPlates: number
-  correctAnswers: number
-  incorrectAnswers: number
-  possibleDeficiency: ColorVisionDeficiency
-  confidence: 'high' | 'medium' | 'low'
-  details: IshiharaAnswer[]
+export function getPlateOptions(plateId: number): string[] {
+  const plate = ISHIHARA_PLATES.find(p => p.id === plateId)
+  if (!plate) return ['']
+  
+  // Placas de tracejado não têm números
+  if (plate.normalAnswer.includes('-line')) {
+    return ['traçar linha']
+  }
+  
+  const options = new Set<string>()
+  
+  // Adiciona resposta normal
+  if (plate.normalAnswer) options.add(plate.normalAnswer)
+  
+  // Adiciona resposta de daltônico
+  if (plate.colorBlindAnswer) options.add(plate.colorBlindAnswer)
+  
+  // Adiciona respostas específicas
+  if (plate.protanAnswer) options.add(plate.protanAnswer)
+  if (plate.deutanAnswer) options.add(plate.deutanAnswer)
+  
+  // Adiciona opção "nada" se a placa puder ser invisível
+  if (plate.type === 'vanishing' || plate.type === 'hidden' || plate.colorBlindAnswer === '') {
+    options.add('')
+  }
+  
+  // Adiciona opções distrataoras baseadas nos dígitos da resposta correta
+  if (plate.normalAnswer && !plate.normalAnswer.includes('-line')) {
+    const digits = plate.normalAnswer.split('')
+    // Inverte os dígitos
+    if (digits.length === 2) {
+      options.add(digits[1] + digits[0])
+    }
+    // Adiciona variações com ±1
+    digits.forEach(digit => {
+      const num = parseInt(digit)
+      if (!isNaN(num)) {
+        if (num > 0) options.add(String(num - 1))
+        if (num < 9) options.add(String(num + 1))
+      }
+    })
+  }
+  
+  return Array.from(options).slice(0, 8) // Máximo 8 opções
 }
 
 /**
  * Verifica se a resposta do usuário está correta
  */
-export function checkIshiharaAnswer(
-  plate: IshiharaPlate,
-  userAnswer: string
-): { isCorrect: boolean; interpretation: string } {
-  const normalizedAnswer = userAnswer.trim().toLowerCase()
-  const normalizedExpected = plate.normalAnswer.toLowerCase()
+export function checkAnswer(plateId: number, userAnswer: string): boolean {
+  const plate = ISHIHARA_PLATES.find(p => p.id === plateId)
+  if (!plate) return false
   
-  // Placa de demonstração - sempre deve acertar
+  // Placa de demonstração - aceita qualquer resposta correta
   if (plate.type === 'demonstration') {
-    return {
-      isCorrect: normalizedAnswer === normalizedExpected,
-      interpretation: 'Placa de demonstração'
-    }
+    return userAnswer === plate.normalAnswer
   }
   
-  // Verifica se resposta está correta (visão normal)
-  const isCorrect = normalizedAnswer === normalizedExpected
+  // Para outras placas, considera correto se for qualquer resposta válida
+  // (visão normal ou deficiência de cor)
+  const validAnswers = [
+    plate.normalAnswer,
+    plate.colorBlindAnswer,
+    plate.protanAnswer,
+    plate.deutanAnswer,
+  ].filter(Boolean)
   
-  // Verifica se pode ser resposta de daltonismo
-  const isColorBlindAnswer = plate.colorBlindAnswer && 
-    normalizedAnswer === plate.colorBlindAnswer.toLowerCase()
-  
-  const isProtanAnswer = plate.protanAnswer && 
-    normalizedAnswer === plate.protanAnswer.toLowerCase()
-  
-  const isDeutanAnswer = plate.deutanAnswer && 
-    normalizedAnswer === plate.deutanAnswer.toLowerCase()
-  
-  let interpretation = ''
-  if (isCorrect) {
-    interpretation = 'Resposta de visão normal'
-  } else if (isColorBlindAnswer) {
-    interpretation = 'Possível daltonismo vermelho-verde'
-  } else if (isProtanAnswer) {
-    interpretation = 'Possível protanopia'
-  } else if (isDeutanAnswer) {
-    interpretation = 'Possível deuteranopia'
-  } else if (normalizedAnswer === '' || normalizedAnswer === 'nada' || normalizedAnswer === 'nothing') {
-    interpretation = 'Não conseguiu ver o número'
-  } else {
-    interpretation = 'Resposta incorreta'
-  }
-  
-  return { isCorrect, interpretation }
+  return validAnswers.includes(userAnswer)
 }
 
 /**
- * Analisa os resultados do teste e determina possível deficiência
+ * Alias para compatibilidade
  */
-export function analyzeIshiharaResults(answers: IshiharaAnswer[]): IshiharaResult {
-  const correctCount = answers.filter(a => a.isCorrect).length
-  const incorrectCount = answers.length - correctCount
-  
-  // Conta padrões específicos
-  let protanCount = 0
-  let deutanCount = 0
-  let vanishingErrors = 0
-  
-  for (const answer of answers) {
-    if (!answer.isCorrect) {
-      if (answer.plate.type === 'vanishing') {
-        vanishingErrors++
-      }
-      if (answer.plate.type === 'diagnostic') {
-        if (answer.userAnswer === answer.plate.protanAnswer) {
-          protanCount++
-        } else if (answer.userAnswer === answer.plate.deutanAnswer) {
-          deutanCount++
-        }
-      }
-    }
-  }
-  
-  // Determina possível deficiência
-  let possibleDeficiency: ColorVisionDeficiency = 'normal'
-  let confidence: 'high' | 'medium' | 'low' = 'high'
-  
-  // Se errou a placa de demonstração, o teste pode não ser válido
-  const demonstrationPlate = answers.find(a => a.plate.type === 'demonstration')
-  if (demonstrationPlate && !demonstrationPlate.isCorrect) {
-    confidence = 'low'
-  }
-  
-  // Análise baseada em erros
-  const errorRate = incorrectCount / answers.length
-  
-  if (errorRate <= 0.1) {
-    possibleDeficiency = 'normal'
-    confidence = 'high'
-  } else if (errorRate <= 0.3) {
-    // Poucos erros - pode ser anomalia leve
-    if (protanCount > deutanCount) {
-      possibleDeficiency = 'protanomaly'
-    } else if (deutanCount > protanCount) {
-      possibleDeficiency = 'deuteranomaly'
-    } else {
-      possibleDeficiency = 'normal'
-    }
-    confidence = 'medium'
-  } else {
-    // Muitos erros - provável daltonismo
-    if (protanCount > deutanCount) {
-      possibleDeficiency = 'protanopia'
-    } else if (deutanCount > protanCount) {
-      possibleDeficiency = 'deuteranopia'
-    } else {
-      // Não conseguiu diferenciar, mas tem muitos erros
-      possibleDeficiency = vanishingErrors > 3 ? 'deuteranopia' : 'protanopia'
-    }
-    confidence = incorrectCount >= 5 ? 'high' : 'medium'
-  }
-  
+export function checkIshiharaAnswer(plate: IshiharaPlate, userAnswer: string): {
+  isCorrect: boolean
+  expectedAnswer: string
+} {
+  const isCorrect = checkAnswer(plate.id, userAnswer)
   return {
-    totalPlates: answers.length,
-    correctAnswers: correctCount,
-    incorrectAnswers: incorrectCount,
-    possibleDeficiency,
-    confidence,
-    details: answers
+    isCorrect,
+    expectedAnswer: plate.normalAnswer,
   }
 }
 
+
 /**
- * Retorna o nome da deficiência em português
+ * Retorna o nome da deficiência de visão de cores
  */
 export function getDeficiencyName(deficiency: ColorVisionDeficiency): string {
   const names: Record<ColorVisionDeficiency, string> = {
-    normal: 'Visão de cores normal',
-    protanopia: 'Protanopia (daltonismo vermelho)',
-    deuteranopia: 'Deuteranopia (daltonismo verde)',
-    protanomaly: 'Protanomalia (deficiência leve de vermelho)',
-    deuteranomaly: 'Deuteranomalia (deficiência leve de verde)',
-    tritanopia: 'Tritanopia (daltonismo azul)',
+    normal: 'Visão normal',
+    protanopia: 'Protanopia',
+    deuteranopia: 'Deuteranopia',
+    protanomaly: 'Protanomalia',
+    deuteranomaly: 'Deuteranomalia',
+    tritanopia: 'Tritanopia',
   }
   return names[deficiency]
 }
 
 /**
- * Obtém a lista de opções de resposta para uma placa (modo assistido)
+ * Analisa os resultados do teste e retorna um diagnóstico
  */
-export function getPlateOptions(plate: IshiharaPlate): string[] {
-  // Opções sempre incluem a resposta correta e distratores
-  const baseOptions = ['12', '8', '6', '29', '57', '5', '3', '15', '74', '45', '97', '26', '42', '16', '21']
+export function analyzeResults(answers: { plateId: number; answer: string }[]): {
+  diagnosis: ColorVisionDeficiency
+  confidence: number
+  description: string
+} {
+  let normalCount = 0
+  let colorBlindCount = 0
+  let protanCount = 0
+  let deutanCount = 0
   
-  // Garante que a resposta correta está nas opções
-  let options = [plate.normalAnswer]
+  answers.forEach(({ plateId, answer }) => {
+    const plate = ISHIHARA_PLATES.find(p => p.id === plateId)
+    if (!plate) return
+    
+    if (answer === plate.normalAnswer) normalCount++
+    if (answer === plate.colorBlindAnswer) colorBlindCount++
+    if (answer === plate.protanAnswer) protanCount++
+    if (answer === plate.deutanAnswer) deutanCount++
+  })
   
-  // Adiciona a resposta de daltonismo se existir
-  if (plate.colorBlindAnswer && plate.colorBlindAnswer !== plate.normalAnswer) {
-    options.push(plate.colorBlindAnswer)
+  const total = answers.length
+  
+  // Análise básica
+  if (normalCount / total > 0.8) {
+    return {
+      diagnosis: 'normal',
+      confidence: normalCount / total,
+      description: 'Visão de cores normal',
+    }
   }
   
-  // Adiciona distratores até ter 4-5 opções
-  const distractors = baseOptions.filter(o => 
-    o !== plate.normalAnswer && 
-    o !== plate.colorBlindAnswer
-  )
+  if (protanCount > deutanCount && protanCount / total > 0.3) {
+    return {
+      diagnosis: 'protanopia',
+      confidence: protanCount / total,
+      description: 'Possível protanopia (deficiência de cones vermelhos)',
+    }
+  }
   
-  // Embaralha e pega alguns distratores
-  const shuffled = distractors.sort(() => Math.random() - 0.5)
-  options = [...options, ...shuffled.slice(0, 3)]
+  if (deutanCount > protanCount && deutanCount / total > 0.3) {
+    return {
+      diagnosis: 'deuteranopia',
+      confidence: deutanCount / total,
+      description: 'Possível deuteranopia (deficiência de cones verdes)',
+    }
+  }
   
-  // Adiciona opção "Não vejo nenhum número"
-  options.push('')
+  if (colorBlindCount / total > 0.4) {
+    return {
+      diagnosis: 'deuteranomaly',
+      confidence: colorBlindCount / total,
+      description: 'Possível daltonismo vermelho-verde (não específico)',
+    }
+  }
   
-  // Embaralha as opções finais
-  return options.sort(() => Math.random() - 0.5)
+  return {
+    diagnosis: 'normal',
+    confidence: 0.5,
+    description: 'Resultados inconclusivos - recomenda-se avaliação profissional',
+  }
 }
+
+/**
+ * Alias para compatibilidade com interface IshiharaAnswer
+ */
+export function analyzeIshiharaResults(answers: IshiharaAnswer[]): IshiharaResult {
+  const simpleAnswers = answers.map(a => ({ plateId: a.plateId, answer: a.answer }))
+  const analysis = analyzeResults(simpleAnswers)
+  
+  const correctCount = answers.filter(a => checkAnswer(a.plateId, a.answer)).length
+  
+  return {
+    ...analysis,
+    correctCount,
+    totalCount: answers.length,
+  }
+}
+
