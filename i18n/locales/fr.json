@@ -66,6 +66,21 @@
       "cannotRead": "Je Ne Peux Pas",
       "holdAt": "Tenez l'appareil à {distance}cm de vos yeux"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Assisté)",
+      "subtitle": "Test de vision des couleurs",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Planches complètes, contrôle manuel",
+      "plate": "Planche",
+      "whatNumber": "Quel nombre voyez-vous ?",
+      "typeNumber": "Tapez le nombre",
+      "cannotSee": "Je ne vois pas de nombre",
+      "lightingTip": "Assurez-vous d'être dans un environnement bien éclairé avec une lumière naturelle ou blanche.",
+      "expected": "Attendu",
+      "answered": "Réponse",
+      "nothing": "Rien"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instructions",
@@ -98,6 +113,12 @@
         "step2": "Essayez de lire le texte à l'écran",
         "step3": "Indiquez si vous pouvez ou non lire le texte",
         "step4": "Tenez l'appareil à {distance}cm de vos yeux"
+      },
+      "ishihara": {
+        "step1": "Des planches de couleurs seront affichées une à la fois",
+        "step2": "Identifiez le nombre que vous voyez sur la planche",
+        "step3": "Si vous ne voyez pas de nombre, cliquez sur 'Je ne vois pas de nombre'",
+        "step4": "Gardez la luminosité de l'écran à 100% et évitez la lumière jaunâtre"
       }
     },
     "startTest": "Démarrer le test",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Envisagez d'ajuster la distance ou la calibration.",
     "detailsByLine": "Détails par ligne :",
     "restart": "Refaire le test",
-    "exit": "Quitter"
+    "exit": "Quitter",
+    "ishihara": {
+      "title": "Résultat du Test de Vision des Couleurs",
+      "normalVision": "Vision des couleurs normale",
+      "deficiencyDetected": "Possible déficience de la vision des couleurs",
+      "protanopia": "Protanopie (cécité au rouge)",
+      "deuteranopia": "Deutéranopie (cécité au vert)",
+      "protanomaly": "Protanomalie (déficience légère au rouge)",
+      "deuteranomaly": "Deutéranomalie (déficience légère au vert)",
+      "tritanopia": "Tritanopie (cécité au bleu)",
+      "correctAnswers": "Réponses correctes",
+      "accuracy": "Précision",
+      "confidence": {
+        "high": "Haute confiance",
+        "medium": "Moyenne confiance",
+        "low": "Basse confiance"
+      },
+      "disclaimer": "Ce test est uniquement pour le dépistage. Consultez un ophtalmologiste pour un diagnostic précis des déficiences de la vision des couleurs."
+    }
   },
   "setup": {
     "title": "Calibration",

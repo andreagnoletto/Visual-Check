@@ -66,6 +66,21 @@
       "cannotRead": "Ich Kann Nicht",
       "holdAt": "Halten Sie das Gerät {distance}cm von Ihren Augen entfernt"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Assistiert)",
+      "subtitle": "Farbsehtest",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Vollständige Tafeln, manuelle Steuerung",
+      "plate": "Tafel",
+      "whatNumber": "Welche Zahl sehen Sie?",
+      "typeNumber": "Geben Sie die Zahl ein",
+      "cannotSee": "Ich sehe keine Zahl",
+      "lightingTip": "Stellen Sie sicher, dass Sie sich in einer gut beleuchteten Umgebung mit natürlichem oder weißem Licht befinden.",
+      "expected": "Erwartet",
+      "answered": "Antwort",
+      "nothing": "Nichts"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Anleitung",
@@ -98,6 +113,12 @@
         "step2": "Versuchen Sie, den Text auf dem Bildschirm zu lesen",
         "step3": "Geben Sie an, ob Sie den Text lesen können oder nicht",
         "step4": "Halten Sie das Gerät {distance}cm von Ihren Augen entfernt"
+      },
+      "ishihara": {
+        "step1": "Farbtafeln werden nacheinander angezeigt",
+        "step2": "Identifizieren Sie die Zahl, die Sie auf der Tafel sehen",
+        "step3": "Wenn Sie keine Zahl sehen können, klicken Sie auf 'Ich sehe keine Zahl'",
+        "step4": "Halten Sie die Bildschirmhelligkeit bei 100% und vermeiden Sie gelbliches Licht"
       }
     },
     "startTest": "Test starten",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Erwägen Sie, den Abstand oder die Kalibrierung anzupassen.",
     "detailsByLine": "Details pro Zeile:",
     "restart": "Test wiederholen",
-    "exit": "Beenden"
+    "exit": "Beenden",
+    "ishihara": {
+      "title": "Ergebnis des Farbsehtests",
+      "normalVision": "Normales Farbsehen",
+      "deficiencyDetected": "Mögliche Farbsehschwäche",
+      "protanopia": "Protanopie (Rotblindheit)",
+      "deuteranopia": "Deuteranopie (Grünblindheit)",
+      "protanomaly": "Protanomalie (leichte Rotschwäche)",
+      "deuteranomaly": "Deuteranomalie (leichte Grünschwäche)",
+      "tritanopia": "Tritanopie (Blaublindheit)",
+      "correctAnswers": "Richtige Antworten",
+      "accuracy": "Genauigkeit",
+      "confidence": {
+        "high": "Hohe Zuverlässigkeit",
+        "medium": "Mittlere Zuverlässigkeit",
+        "low": "Niedrige Zuverlässigkeit"
+      },
+      "disclaimer": "Dieser Test dient nur dem Screening. Konsultieren Sie einen Augenarzt für eine genaue Diagnose von Farbsehschwächen."
+    }
   },
   "setup": {
     "title": "Kalibrierung",

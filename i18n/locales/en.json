@@ -66,6 +66,21 @@
       "cannotRead": "I Cannot",
       "holdAt": "Hold the device at {distance}cm from your eyes"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Assisted)",
+      "subtitle": "Color vision test",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Complete plates, manual control",
+      "plate": "Plate",
+      "whatNumber": "What number do you see?",
+      "typeNumber": "Type the number",
+      "cannotSee": "I don't see a number",
+      "lightingTip": "Make sure you are in a well-lit environment with natural or white light.",
+      "expected": "Expected",
+      "answered": "Answer",
+      "nothing": "Nothing"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instructions",
@@ -98,6 +113,12 @@
         "step2": "Try to read the text on screen",
         "step3": "Indicate whether you can or cannot read the text",
         "step4": "Hold the device at {distance}cm from your eyes"
+      },
+      "ishihara": {
+        "step1": "Colored plates will be displayed one at a time",
+        "step2": "Identify the number you see on the plate",
+        "step3": "If you can't see a number, click 'I don't see a number'",
+        "step4": "Keep screen brightness at 100% and avoid yellowish light"
       }
     },
     "startTest": "Start Test",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Consider adjusting the distance or calibration.",
     "detailsByLine": "Details by line:",
     "restart": "Retry Test",
-    "exit": "Exit"
+    "exit": "Exit",
+    "ishihara": {
+      "title": "Color Vision Test Result",
+      "normalVision": "Normal color vision",
+      "deficiencyDetected": "Possible color vision deficiency",
+      "protanopia": "Protanopia (red blindness)",
+      "deuteranopia": "Deuteranopia (green blindness)",
+      "protanomaly": "Protanomaly (mild red deficiency)",
+      "deuteranomaly": "Deuteranomaly (mild green deficiency)",
+      "tritanopia": "Tritanopia (blue blindness)",
+      "correctAnswers": "Correct answers",
+      "accuracy": "Accuracy",
+      "confidence": {
+        "high": "High confidence",
+        "medium": "Medium confidence",
+        "low": "Low confidence"
+      },
+      "disclaimer": "This test is for screening only. Consult an ophthalmologist for accurate diagnosis of color vision deficiencies."
+    }
   },
   "setup": {
     "title": "Calibration",

@@ -45,7 +45,7 @@ function showControlsTemporarily() {
   if (controlsTimeout) clearTimeout(controlsTimeout)
   controlsTimeout = setTimeout(() => {
     showControls.value = false
-  }, 3000)
+  }, CONFIG.PRO_CONTROLS_HIDE_TIMEOUT)
 }
 
 function handleScreenTap() {

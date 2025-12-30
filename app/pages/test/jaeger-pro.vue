@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useJaegerProTest } from '~/composables/useJaegerProTest'
 import { useCalibrationStore } from '~/stores/calibration'
 import { JAEGER_LINES } from '~/utils/jaegerCalculations'
+import { CONFIG } from '~/utils/constants'
 
 const { t } = useI18n()
 
@@ -41,7 +42,7 @@ function showControlsTemporarily() {
   if (controlsTimeout) clearTimeout(controlsTimeout)
   controlsTimeout = setTimeout(() => {
     showControls.value = false
-  }, 3000)
+  }, CONFIG.PRO_CONTROLS_HIDE_TIMEOUT)
 }
 
 function handleScreenTap() {

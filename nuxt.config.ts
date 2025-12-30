@@ -122,6 +122,18 @@ export default defineNuxtConfig({
         { rel: 'apple-touch-icon', href: '/apple-touch-icon.svg' },
         { rel: 'mask-icon', href: '/icon.svg', color: '#1976D2' },
       ],
+      script: [
+        {
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-24RWVHE2FQ',
+          async: true,
+        },
+        {
+          children: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-24RWVHE2FQ');`,
+        },
+      ],
     },
   },
 })

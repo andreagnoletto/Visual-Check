@@ -36,6 +36,12 @@ const testItems = computed(() => [
     icon: 'mdi-book-open-page-variant',
     to: '/test/jaeger',
   },
+  {
+    title: t('tests.ishihara.title'),
+    subtitle: t('tests.ishihara.subtitle'),
+    icon: 'mdi-palette',
+    to: '/test/ishihara',
+  },
 ])
 
 const focusedIndex = ref(0)

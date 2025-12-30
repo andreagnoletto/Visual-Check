@@ -139,6 +139,21 @@ npm run preview
 
 ---
 
+## ⚙️ Configurações
+
+As constantes do app estão em `app/utils/constants.ts`:
+
+| Constante | Valor | Descrição |
+|-----------|-------|-----------|
+| `MIN_DISTANCE_M` | 0.3 | Distância mínima do paciente (metros) |
+| `MAX_DISTANCE_M` | 6 | Distância máxima do paciente (metros) |
+| `PRO_CONTROLS_HIDE_TIMEOUT` | 9000 | Tempo para ocultar setas laterais no modo Pro (ms) |
+| `FONT_TIMEOUT` | 3000 | Timeout para carregamento de fonte (ms) |
+| `PRO_START_LINE_INDEX` | 5 | Linha inicial no modo Pro (20/40) |
+| `PIN_LOCK_TIMEOUT` | 300000 | Tempo de bloqueio após tentativas de PIN (5min) |
+
+---
+
 ## 📄 Licença
 
 MIT

@@ -66,6 +66,21 @@
       "cannotRead": "Não Consigo",
       "holdAt": "Segure o dispositivo a {distance}cm dos olhos"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Assistido)",
+      "subtitle": "Teste de visão de cores",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Placas completas, controle manual",
+      "plate": "Placa",
+      "whatNumber": "Qual número você vê?",
+      "typeNumber": "Digite o número",
+      "cannotSee": "Não vejo número",
+      "lightingTip": "Certifique-se de estar em ambiente bem iluminado com luz natural ou branca.",
+      "expected": "Esperado",
+      "answered": "Resposta",
+      "nothing": "Nada"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instruções",
@@ -98,6 +113,12 @@
         "step2": "Tente ler o texto na tela",
         "step3": "Indique se consegue ou não ler o texto",
         "step4": "Segure o dispositivo a {distance}cm dos olhos"
+      },
+      "ishihara": {
+        "step1": "Placas coloridas serão exibidas uma de cada vez",
+        "step2": "Identifique o número que você vê na placa",
+        "step3": "Se não conseguir ver um número, clique em 'Não vejo número'",
+        "step4": "Mantenha o brilho da tela em 100% e evite luz amarelada"
       }
     },
     "startTest": "Iniciar Teste",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Considere ajustar a distância ou calibração.",
     "detailsByLine": "Detalhes por linha:",
     "restart": "Refazer Teste",
-    "exit": "Sair"
+    "exit": "Sair",
+    "ishihara": {
+      "title": "Resultado do Teste de Cores",
+      "normalVision": "Visão de cores normal",
+      "deficiencyDetected": "Possível deficiência de visão de cores",
+      "protanopia": "Protanopia (cegueira ao vermelho)",
+      "deuteranopia": "Deuteranopia (cegueira ao verde)",
+      "protanomaly": "Protanomalia (deficiência leve ao vermelho)",
+      "deuteranomaly": "Deuteranomalia (deficiência leve ao verde)",
+      "tritanopia": "Tritanopia (cegueira ao azul)",
+      "correctAnswers": "Respostas corretas",
+      "accuracy": "Precisão",
+      "confidence": {
+        "high": "Alta confiança",
+        "medium": "Média confiança",
+        "low": "Baixa confiança"
+      },
+      "disclaimer": "Este teste é apenas uma triagem. Consulte um oftalmologista para diagnóstico preciso de deficiências de visão de cores."
+    }
   },
   "setup": {
     "title": "Calibração",

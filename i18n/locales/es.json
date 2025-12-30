@@ -66,6 +66,21 @@
       "cannotRead": "No Puedo",
       "holdAt": "Sostenga el dispositivo a {distance}cm de sus ojos"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Asistido)",
+      "subtitle": "Prueba de visión de colores",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Placas completas, control manual",
+      "plate": "Placa",
+      "whatNumber": "¿Qué número ve?",
+      "typeNumber": "Escriba el número",
+      "cannotSee": "No veo ningún número",
+      "lightingTip": "Asegúrese de estar en un ambiente bien iluminado con luz natural o blanca.",
+      "expected": "Esperado",
+      "answered": "Respuesta",
+      "nothing": "Nada"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Instrucciones",
@@ -98,6 +113,12 @@
         "step2": "Intente leer el texto en la pantalla",
         "step3": "Indique si puede o no leer el texto",
         "step4": "Sostenga el dispositivo a {distance}cm de sus ojos"
+      },
+      "ishihara": {
+        "step1": "Se mostrarán placas de colores una a la vez",
+        "step2": "Identifique el número que ve en la placa",
+        "step3": "Si no puede ver un número, haga clic en 'No veo ningún número'",
+        "step4": "Mantenga el brillo de la pantalla al 100% y evite luz amarillenta"
       }
     },
     "startTest": "Iniciar Prueba",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Considere ajustar la distancia o calibración.",
     "detailsByLine": "Detalles por línea:",
     "restart": "Repetir Prueba",
-    "exit": "Salir"
+    "exit": "Salir",
+    "ishihara": {
+      "title": "Resultado de la Prueba de Colores",
+      "normalVision": "Visión de colores normal",
+      "deficiencyDetected": "Posible deficiencia de visión de colores",
+      "protanopia": "Protanopía (ceguera al rojo)",
+      "deuteranopia": "Deuteranopía (ceguera al verde)",
+      "protanomaly": "Protanomalía (deficiencia leve al rojo)",
+      "deuteranomaly": "Deuteranomalía (deficiencia leve al verde)",
+      "tritanopia": "Tritanopía (ceguera al azul)",
+      "correctAnswers": "Respuestas correctas",
+      "accuracy": "Precisión",
+      "confidence": {
+        "high": "Alta confianza",
+        "medium": "Media confianza",
+        "low": "Baja confianza"
+      },
+      "disclaimer": "Esta prueba es solo para detección. Consulte a un oftalmólogo para un diagnóstico preciso de deficiencias de visión de colores."
+    }
   },
   "setup": {
     "title": "Calibración",

@@ -66,6 +66,21 @@
       "cannotRead": "Non Riesco",
       "holdAt": "Tieni il dispositivo a {distance}cm dai tuoi occhi"
     },
+    "ishihara": {
+      "name": "Ishihara",
+      "title": "Ishihara (Assistito)",
+      "subtitle": "Test della visione dei colori",
+      "proTitle": "Ishihara (Pro)",
+      "proSubtitle": "Tavole complete, controllo manuale",
+      "plate": "Tavola",
+      "whatNumber": "Quale numero vedi?",
+      "typeNumber": "Digita il numero",
+      "cannotSee": "Non vedo alcun numero",
+      "lightingTip": "Assicurati di essere in un ambiente ben illuminato con luce naturale o bianca.",
+      "expected": "Previsto",
+      "answered": "Risposta",
+      "nothing": "Niente"
+    },
     "proBadge": "PRO",
     "instructions": {
       "title": "Istruzioni",
@@ -98,6 +113,12 @@
         "step2": "Prova a leggere il testo sullo schermo",
         "step3": "Indica se riesci o meno a leggere il testo",
         "step4": "Tieni il dispositivo a {distance}cm dai tuoi occhi"
+      },
+      "ishihara": {
+        "step1": "Le tavole colorate verranno visualizzate una alla volta",
+        "step2": "Identifica il numero che vedi sulla tavola",
+        "step3": "Se non riesci a vedere un numero, clicca su 'Non vedo alcun numero'",
+        "step4": "Mantieni la luminosità dello schermo al 100% ed evita la luce giallastra"
       }
     },
     "startTest": "Inizia test",
@@ -113,7 +134,25 @@
     "adjustSuggestion": "Considera di regolare la distanza o la calibrazione.",
     "detailsByLine": "Dettagli per riga:",
     "restart": "Ripeti test",
-    "exit": "Esci"
+    "exit": "Esci",
+    "ishihara": {
+      "title": "Risultato del Test della Visione dei Colori",
+      "normalVision": "Visione dei colori normale",
+      "deficiencyDetected": "Possibile deficit della visione dei colori",
+      "protanopia": "Protanopia (cecità al rosso)",
+      "deuteranopia": "Deuteranopia (cecità al verde)",
+      "protanomaly": "Protanomalia (deficit lieve al rosso)",
+      "deuteranomaly": "Deuteranomalia (deficit lieve al verde)",
+      "tritanopia": "Tritanopia (cecità al blu)",
+      "correctAnswers": "Risposte corrette",
+      "accuracy": "Precisione",
+      "confidence": {
+        "high": "Alta affidabilità",
+        "medium": "Media affidabilità",
+        "low": "Bassa affidabilità"
+      },
+      "disclaimer": "Questo test è solo per lo screening. Consulta un oculista per una diagnosi accurata dei deficit della visione dei colori."
+    }
   },
   "setup": {
     "title": "Calibrazione",

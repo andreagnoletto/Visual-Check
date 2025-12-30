@@ -8,8 +8,11 @@ export const CONFIG = {
   FONT_TIMEOUT: 3000, // ms
 
   // Calibração
-  MIN_DISTANCE_M: 2,
-  MAX_DISTANCE_M: 10,
+  MIN_DISTANCE_M: 0.3,
+  MAX_DISTANCE_M: 6,
+
+  // Pro Mode - Controles
+  PRO_CONTROLS_HIDE_TIMEOUT: 36000, // ms (tempo para ocultar setas laterais)
   MIN_PX_PER_MM: 2.0,
   MAX_PX_PER_MM: 20.0, // Atualizado para suportar smartphones de alta densidade
   DEFAULT_ASPECT_RATIO: '16:9',
